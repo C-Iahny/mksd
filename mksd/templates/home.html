@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} MKSD Events {% endblock %}
+
+{% block content %}
+<h1>Post</h1>
+
+
+<div class="container my-5">
+ 
+    <hr />
+    <div class="row">
+        {% for post in object_list %}
+        <div class="card m-3" style="width: 18rem;" id="img">
+            <img src="{{ post.header_image.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 200px; margin-top: 13px;">
+            <div class="card-body">
+                <h5 class="card-title">{{post}}</h5>
+                {{ post.snippet }}
+                <br><br>
+                <a href="{% url 'article-detail' post.pk %}" class="btn btn-primary btn-sm">Detail</a>
+            </div>
+
+        </div>
+        {% empty %}
+          <p>No product yet</p>
+         {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-------
+<ul>
+	
+
+	{% for post in object_list %}
+		<li>
+			<a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> 
+			<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+			<small>{{ post.author.first_name }} {{ post.author.last_name }}</small>
+			<small>| {{ post.post_date }}</small>
+			
+			{% if user.is_authenticated %}
+
+				{% if user.id == post.author.id %}
+					<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+					<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+				{% endif %}
+				
+			{% endif %}
+			<br>
+			{{ post.snippet }}
+
+			{{ post.body|slice:":200 " | safe }}  Slice: pour limiter le nb de caractères à afficher sur home 
+		</li>
+
+	{% endfor %}
+
+
+</ul>
+
+
+
+	{% for post in object_list %}
+<div class="card mb-3" style="max-width: 840px; height: 150px;">
+
+  <div class="row g-0">
+
+  	{% if post.header_image %}
+	    <div class="col-md-3">
+	      <img src="{{ post.header_image.url }}" class="img-fluid rounded-start" width="170" height="120" alt="...">
+	    </div>
+
+    {% else %}
+	    <div class="col-md-3">
+	      <img src="{% static 'mksd/images/LOGO.jpeg' %}" class="img-fluid rounded-start" width="140" height="80" alt="...">
+	    </div>
+    {% endif %}
+
+
+  Description 
+   <div class="col-md-8">
+      <div class="card-body">
+
+        	<h5><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h5>
+
+			<small><a href="{% url 'category' post.category %}">{{ post.category }}</a> - </small>
+			<small>{{ post.author.first_name }} {{ post.author.last_name }}</small>
+			<small>| {{ post.post_date }}</small>
+
+	<---  Edit and Delete Post -----
+	        	<small>
+
+				        {% if user.is_authenticated %}
+
+								{% if user.id == post.author.id %}
+									<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+									<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+								{% endif %}
+								
+								{% endif %}
+						</small>
+
+
+
+
+			<br>
+
+			{{ post.snippet }} <--Fanentanana ny olona hijery ny roy na famintinana ny zavatra tokony ho hita ao --
+	        <p class="card-text">
+	        	{{ post.body|slice:":50 " | safe }} <-- Slice: pour limiter le nb de caractères à afficher sur home --
+	        </p>
+
+
+
+
+      </div>
+    </div>
+  </div>
+<hr>
+</div>
+  	{% endfor %}
+----->
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

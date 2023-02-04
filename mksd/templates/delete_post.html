@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}  Delete Post  {% endblock %}
+
+{% block content %}
+<h1>Delete Post</h1>
+
+<style type="text/css">
+	
+	.container {
+		width: 500px;
+	}
+
+</style>
+
+<div>Delete: {{ post.title }}</div>
+
+{#% if user.id == Post.author.id %#}
+<div class="container">
+	<div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<strong>Tena sûr an? </strong><br><br>
+			<button class="btn btn-danger">Delete</button>
+			<a href="{% url 'article-detail' post.pk %}" class="btn btn-primary">Detail</a>
+			
+		</form>
+	</div>
+</div>
+{#% else %#}
+	Vous ne pouvez pas supprimer ce post et vous le savez!!!
+	<a href="{% url 'article-detail' post.pk %}" class="btn btn-secondary">Retour</a>
+{#% endif %#}
+
+
+{% endblock %}
