@@ -1,1 +1,1 @@
-web: python manage.py && munich.wsgi
+web: python manage.py && gunicorn munich.wsgi
