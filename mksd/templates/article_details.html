@@ -7,6 +7,8 @@
 <small>current user: {{ user.id }}<br></small>
 <small>post author: {{ post.author.id }}</small>
 --->
+
+<div class="container">
 	<h2>{{ post.title }}</h2><small>
 	
 	<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
@@ -138,5 +140,7 @@
 	<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
 
 <br><br>
+
+</div>
 
 {% endblock %}
