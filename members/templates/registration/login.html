@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}  Login  {% endblock %}
+
+{% block content %}
+<h1>Login...</h1>
+
+<style type="text/css">
+	
+	.container {
+		width: 500px;
+	}
+
+</style>
+
+
+<div class="container">
+	<div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+			
+			<div class="form-group">
+				<input type="text" name="username" class="form-control" placeholder="Username">
+			<div>
+				<br>
+
+			</div class="form-group">
+				<input type="text" name="password" class="form-control" placeholder="Password">
+			</div>
+			<br>
+
+			<button class="btn btn-primary">Login</button>
+			<br><br>
+			<small id="emailHelp" class="form-text text-muted">Vous n'êtes pas encore mebmre? Clickez <a href="{% url 'register' %}">ici</a>.</small>
+			
+		</form>
+	</div>
+</div>
+{% endblock %}
