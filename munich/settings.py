@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'mksd',
     'members',
     'ckeditor',
+    'contact',
 
 
 

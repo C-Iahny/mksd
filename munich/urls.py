@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('mksd.urls')),
     path('members/', include('members.urls')),
     path('members/', include('django.contrib.auth.urls')),
+    path('contact/', include('contact.urls')),
 
 
     
