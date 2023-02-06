@@ -62,6 +62,33 @@
 
       {% endif %}
 
+            <div class="dropdown-center">
+                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Kontakt
+                </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="{% url 'contact' %}">Send email</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="#">MKSD FAQ</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'anmeldebogen' %}">Anmeldebogen</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
+                    </li>
+
+                  </ul>
+            </div>
 
 <!-- ---------------------- SEARCH BAR ------------------------ 
 
@@ -107,33 +134,7 @@
             
 
 
-            <div class="dropdown-center">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Kontakt
-                </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="{% url 'contact' %}">Send email</a>
-                    </li>
 
-                    <li>
-                      <a class="dropdown-item" href="#">MKSD FAQ</a>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item" href="{% url 'anmeldebogen' %}">Anmeldebogen</a>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
-                    </li>
-
-                  </ul>
-            </div>
         </div>
 
 
