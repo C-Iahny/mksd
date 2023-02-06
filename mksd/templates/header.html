@@ -46,7 +46,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
               {% for item in cat_menu %}
-               <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+               <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a> <!-- tokony asiana | slugify ao aorian'ilay item %} nefa tsy mety-->
               {% endfor %}
 
               
@@ -98,7 +98,7 @@
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="{#% url 'add_post' %#}">Post adden</a>
+                      <a class="dropdown-item" href="{% url 'add_post' %}">Post adden</a>
                     </li>
 
                   </ul>
@@ -113,7 +113,7 @@
                 </button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="{#% url 'contact' %#}">Send email</a>
+                      <a class="dropdown-item" href="{% url 'contact' %}">Send email</a>
                     </li>
 
                     <li>
@@ -121,15 +121,15 @@
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="{#% url 'anmeldebogen' %#}">Anmeldebogen</a>
+                      <a class="dropdown-item" href="{% url 'anmeldebogen' %}">Anmeldebogen</a>
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="{#% url 'about' %#}">Datenschutzerklärung</a>
+                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="{#% url 'impressum' %#}">Impressum</a>
+                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
                     </li>
 
                   </ul>
