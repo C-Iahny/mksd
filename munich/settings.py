@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'members',
     'ckeditor',
     'contact',
-    'psycopg2',
+    #'psycopg2',
 
 
 
