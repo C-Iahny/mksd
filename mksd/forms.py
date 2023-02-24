@@ -23,7 +23,7 @@ class PostForm(forms.ModelForm):
 			'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
-			'header_image': forms.FileField(),
+			'header_image': forms.FileInput(),
 
 		}
 
