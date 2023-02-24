@@ -7,7 +7,6 @@
 <small>current user: {{ user.id }}<br></small>
 <small>post author: {{ post.author.id }}</small>
 --->
-
 <br>
 <div class="container">
 	<h2>{{ post.title }}</h2><small>
@@ -30,7 +29,7 @@
 		<img src="{{ post.header_image.url }}" style="max-width: 65%; max-height: 45%;">
 	{% endif %}
 
-	<br><br>
+	
 	{{ post.body | safe }}
 	
 
@@ -141,7 +140,5 @@
 	<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
 
 <br><br>
-
 </div>
-
 {% endblock %}
