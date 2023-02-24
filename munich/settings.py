@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'members',
     'ckeditor',
     'contact',
+    'psycopg2',
 
 
 
@@ -152,6 +153,21 @@ STATICFILES_DIRS = (
 )
 
 
+CSRF_TRUSTED_ORIGINS = ['https://*.mksd-production.up.railway.app/','https://*.127.0.0.1']
+
+# --------- EMAIL SERVER --------------------
+import smtplib
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'miarisoa00@gmail.com'
+EMAIL_HOST_PASSWORD = 'nfocgjacaernvfed'
+EMAIL_USE_TLS = True 
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'default from email'
 
 
 
