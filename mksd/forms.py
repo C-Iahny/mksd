@@ -23,6 +23,7 @@ class PostForm(forms.ModelForm):
 			'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
+			'header_image': forms.FileField(),
 
 		}
 
@@ -31,7 +32,7 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
 	class Meta:
 		model = Post 
-		fields = ('title', 'author', 'body', 'snippet')
+		fields = ('title', 'author', 'body', 'snippet', 'header_image')
 
 		widgets = {
 
@@ -39,7 +40,7 @@ class EditForm(forms.ModelForm):
 			'author': forms.Select(attrs={'class': 'form-control'}),
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
-
+			'header_image': forms.FileInput(attrs={"rows": "", "class": "file_class_name"}),
 		}
 
 
