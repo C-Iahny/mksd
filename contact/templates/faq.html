@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<style type="text/css">
+	
+.image {
+	width: 100%;
+}
+
+</style>
+
+<div class="container" style="margin-top: 50px;">
+	<div class="card">
+		<div class="card-header">
+		    <h1>
+		    	<small>
+					<!--- <img class="logo_mitmachen" src="{% static 'mksd/images/LOGO.jpeg' %}" width="150px">  -->
+					<img src="mksd/snippets/admin_images/LOGO.jpeg" alt="logo">
+				</small>
+
+				Fanontaniana sy Valiny
+			</h1>
+
+		</div>
+
+		<div class="card-header">
+			<center><h4>Sport - Fanatanjahan-tena</h4></center>
+
+		</div>
+
+		<div class="card-body">
+		    <blockquote class="blockquote mb-0">
+		    	<ul>
+		    		<li><strong>SPORT</strong>
+		    			<ul><li>Ahoana ny fizotry ny lalao sy ny fandaharam-potoana?</li>
+		    				<ol>Eny tompoko, natao izany mba ahafahan’ny ekipa tsirairay misitraka ny lalao.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Misaraka ve ny ekipa lahy sy vavy @ ity 2nd edition ity?</li>
+		    				<ol>Ny sport Futsal dia manomboka amin’ny 8hOra ary ny Basketball kosa dia amin’ny 8h Ora. Ny final sy quart-de final dia amin’ny 13Ora eoeo. Ary pause midi kosa amin’ny 12:30 Ora ary maharitra atsakadiny eo ahafany mpilalao miala sasatra.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Inona kay ny loka azo avy amin’ny ireo mandresy ny lalao?</li>
+		    				<ol>Mahazo coupe avokoa ireo ekipa mpandresy ary mahazo fanomezana izay tafiditra final. Ary ho atao fanomezana manokana amin’ny famaranana ny MKSD amin´ny alahady 03.10.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Inona no ataoko raha sendra naratra aho amin’ny lalao ?</li>
+		    				<ol>Manatona avy hatrany ireo tompon’andraikitra izay hitanao. Ity hetsika faharoa ity dia nohezahan’ny MKSD ny hanatevina ny fiarovana ireo mpilalao mpandray Anjara. Efa mivonona amin’izany ireo ekipa tompon’andraikitra.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Aiza no mividy billet amin’ny fidirana Sport?</li>
+		    				<ol>Ny billet rehetra dia vidina eny an-toerana amin’io andro io ihany. Mivonona amin´ny Lelavola na hoe Bargeld.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Misy sakafo sy zava-pisotro amidy ve amin’io andro io?</li>
+		    				<ol>Mandritry ny lalao dia hisy fivarotana sakafo ho an’ireo izay te hanala hetata sy hanoana. Sakafo malagasy avokoa no ezahan’ny MKSD aroso amin’io ary amin’ny vidiny mirary. Ohatra Nem, sambos, composé, saosisy, thb, bonbon anglais sns. Nohon´ny antony ara-piarovana ny ain´ny mpanotrona dia tsy afaka itondrana tavoangy (Glas) amin´ny MKSD.</ol>
+		    			</ul>
+		    			<br>
+		    		</li>
+		    	</ul>
+		    	<ul>
+		    		<li><strong>PARTY</strong>
+		    			<ul><li>Afaka mitondra namana ve izaho amin’ilay VIP nefa izy nandoha fidirana tsotra ?</li>
+		    				<ol>Tsia tompoko, izay mandoa VIP ihany no afaka mahazo toerana VIP. Ny toerana VIP dia mahazaka olona eo amin’ny 50.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Ireo mividy billet VIP dia omena toerana manokana ary ireo izay 30 voalohany no mahazo Wilkomen-Getränke avy amin’ny MKSD. Ireo mandoha fidirana tsotra kosa dia afaka misitraka hatrany ny fety. Izany hoe tsy misy io tolotra io.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Ireo mividy billet VIP dia omena toerana manokana ary ireo izay 30 voalohany no mahazo Wilkomen-Getränke avy amin’ny MKSD. Ireo mandoha fidirana tsotra kosa dia afaka misitraka hatrany ny fety. Izany hoe tsy misy io tolotra io.</li>
+		    				<ol>- Eny tompoko.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Iza avy ireo DJ hanentana amin’io fotoana io?</li>
+		    				<ol>Ireo DJ ho avy dia hitanao ao amin´ny flyer ny MKDS</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Mbola ahitana Miss, Mister toy ny tamin’ny taona lasa ve ny Party amin’ity 2nd edition ity?</li>
+		    				<ol>Ny fifaninana Miss et Mister dia mitambatra amin’ny Alahady le 03 Oktobra izay andro natokana ho an’ny Kolotsaina sy Kolotora Malagasy.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul><li>Aiza no mividy billet amin’ny fidirana Party?</li>
+		    				<ol>Ny billet rehetra dia vidina eny an-toerana amin’io andro io ihany.</ol>
+		    			</ul>
+		    			<br>
+		    		</li>
+		    	</ul>
+		    	<ul>
+		    		<li><strong>KULTUR</strong>
+		    			<ul>
+		    				<li>Inona avy ireo hetsika ara-koltoraly hita amin’io andro io?</li>
+		    				<ol>Anisan’ny tanjon’ny MKSD ny mampafantatra ireo Kolotora Malagasy ka hitanao amin’izany indridra ny dihy isam-paritra, ny soratoninina, ny kabary, ny afon-dasy, ny kilalao tahaka ny fanorona sy ny vitsilia. Ho hitana ihany koa ny asa-tanana tahaka ny hosodoko, ny rindran-teny toy ny slam ary indrindra ny hakantony fitafy malagasy izay ho aseho amin’ny alalan’ny hetsika Miss et Mister Diaspora Malagasy Allemana. Tsy adino ihany koa ireo sakafo malagasy izay ho amidy amin’io fotoana io.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Iza avy ireo mandray anjara amin’io hetsika io ?</li>
+		    				<ol>Ny hetsika 2nd edition dia iarahana amin’ny Ambassade Allemana eto Berlin. Tsy adino ihany koa ireo Malagasy manan-talenta maro. Ary indrindra moa ireo Association maro sy ireo Orinasa izay misehatra sy mivoy hatrany ny fifandraisan’ny Malagasy sy Allemana ary ireo firenena miteny teny Allemana tahaky ny Viena sy Autriche. Hitanao ao amin´ny flyer daholo ny mpandray anjara rehetra.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Ahoana ny fandaharam-potoana ?</li>
+		    				<ol>Manomboka amin’ny 13Ora dia hisy ny fivavahana izay hiarana amin’ny Fjkm Stuttgart sy Chorale Malagasy eny an-toerana. Arahany kabary Ambassade ary ireo hetsika ara-koltoraly maro samy hafa hatramin’ny 20ora.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Inona ilay Village MKSD ?</li>
+		    				<ol>Village MKSD dia Stand na ihany koa hoe fampiratiana izay ahafahan’ireo Association na Orinasa na Zavakanto mampiranty ny mombamomba azy. Marihina fa tsy misy vidim-pidirana avokoa ireo fa misokatra ho an’ny daholo be. Manasa anao hanoratra anarana eto raha toa ka te andray anjara ianao.</ol>
+		    			</ul>
+		    			<br>	
+		    			<ul>
+		    				<li>Misy fidim-pidirana ve amin’io fotoana io?</li>
+		    				<ol>Tsia, tompoka. Ny alahady dia misokatra maimaimpoana ho an’ny daholobe. Afaka manome fanomezana ianao raha sitrakao</ol>
+		    			</ul>
+		    			<br>	    				    			
+		    			<ul>
+		    				<li>Hisy sakafo amidy ve amin’io toerana io?</li>
+		    				<ol>Eny, tompoka. Noezahina hatrany ny hanome fahafampo antsika mpitsidika rehetra hanala hetata sy hanoana amin’io fotoana io. Marihina fa sakafo gasy avokoa no hamidy.</ol>
+		    			</ul>
+		    			<br>
+		    			
+		    		</li>
+		    	</ul>
+		    	<ul>
+		    		<li><strong>ALLGEMEIN</strong>
+		    			<ul>
+		    				<li>Inona avy ireo Nachweis takiana eo amin’ny fidirana mba ahazoana tolotra na reduction ny vidim-pidirana?</li>
+		    				<ol>Ho an’ireo ankizy mpianatra, FSJ, Auszubi sy Aupair dia ilana ny Nachweise ahafahana mahazo ilay Ermäßigung. Ho an’ireo mpikambana aminnny Association ihany koa dia ilaina ireo Badge MKSD ahafana misitraka ny 50% Reduction amin’ny fidirana rehetra. Manasa nao hiditra eto raha te ho membre MKSD ianao.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Ekena ve ny Schnell test Corona amin’io hetsika 2nd edition io?</li>
+		    				<ol>Schnell Test dia ekena amin’ny andro sabotsy mandritry ny Sport ary ny Alahady mandritry ny Hetsika ara-koltoraly. Ny Party kosa dia tsy maintsy Test PCR ihany. Ireo rehetra ireo dia ilana Negative Nachweise avokoa.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Inona ny fepetra raisiny MKSD manolona ny Corona?</li>
+		    				<ol>Ny fidirana rehetra amin’ny hetsika MKSD andihany faharoa dia hisy enregistrement avokoa amin’ny application Luca (ho an’ny mampiasa Androïd dia hita ao amin’ny Google Apps ary ho an’ny mampiasa Iphone kosa dia ao amin’ny App Store). Marihina fa hisy ihany koa ny enregistrement eny antoerana. Ny 3-Regelung dia mbola miantra amin’io fotoana io. Izany hoe ny Getest – Genese ary ny Geimpft. Hisy ny fisavana entitra.</ol>
+		    			</ul>
+		    			<br>
+		    			<ul>
+		    				<li>Aona ny fomba hidirana membre MKSD?</li>
+		    				<ol>Eny antoerana dia misy fandraisana anarana ho an’ireo ankizy izay liana te hanatevin-daharana ny Association MKSD ary hisy Stand manazava sy mampafantatra ny anjara toeran’ny MKSD eto Allemana. Azonao atao koa anefa ny misoratra anarana eto.</ol>
+		    			</ul>
+		    			<br>	
+		    		</li>
+		    	</ul>
+
+
+		    </blockquote>
+		</div>
+	</div>
+</div>
+
+
+<div class="container" style="margin-top: 50px;">
+	<div class="card">
+		<div class="card-header">
+			<center><h2>Partnerschaft MKSD e.V. mit „Projekt Mibaliaka“ by MWR Verein in Madagaskar 2022</h2></center>
+
+		</div>
+
+
+
+
+	</div>
+</div>
+
+
+{% endblock %}
+
+
+
