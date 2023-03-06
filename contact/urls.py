@@ -1,24 +1,14 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from .views import Kontact, About, Impressum, Anmeldebogen, Faq
 
-from .views import AddCommentView, LikeView, CategoryListView, CategoryView, AddCategoryView, DeletePostView, UpdatePostView, AddPostView, ArticleDetailView, HomeView
+
 
 urlpatterns = [
+	path('contact/', Kontact, name="contact"), 
+	path('about/', About.as_view(), name="about"), 
+	path('impressum/', Impressum.as_view(), name="impressum"), 
+	path('anmeldebogen/', Anmeldebogen, name="anmeldebogen"), 
+	path('faq/', views.Faq, name="faq"),
 
 
-    path('', HomeView.as_view(), name="home"),
-    path('article/<int:pk>/', ArticleDetailView.as_view(), name="article-detail"),
-    path('add_post/', AddPostView.as_view(), name="add_post"), 
-    path('article/edit/<int:pk>', UpdatePostView.as_view(), name="update_post"),
-    path('article/<int:pk>/remove', DeletePostView.as_view(), name="delete_post"),
-    path('add_category/', AddCategoryView.as_view(), name="add_category"), 
-    path('category/<str:cats>/', CategoryView, name="category"),
-    path('category-list/', CategoryListView, name="category-list"),
-    path('like/<int:pk>', LikeView, name="like_post"),
-    path('article<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
-
-
-
-
-    
 ]
