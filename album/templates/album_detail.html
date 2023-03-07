@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+    img {
+        margin-bottom: 5px;
+    }
+</style>
+
+
+<div class="container my-5">
+    <br />
+    <h2>DETAIL DE L'ALBUM</h2>
+    <a href="{% url 'album' %}" class="btn btn-sm btn-secondary">Retour</a>
+    <a href="{% url 'addimages' pk %}" class="btn btn-primary btn-sm">Add images</a>
+    <br />
+    <hr />
+    <br>
+    <h1>{{ album_obj.title }}</h1>
+    <br>
+    {% for pimage in album_obj.images_set.all %}
+
+    	<a href="{% url 'imagedetail' pimage.pk %}"><img src="{{ pimage.images.url }}" class="card-img-top" alt="banner_image" style="width: 563px; height: 400px;"></a>
+    {% empty %}
+        <p>Mbola tsy misy sary fa ampio.</p>
+        <a href="{% url 'addfiles' %}"></a>
+        <br>
+
+    {% endfor %}
+    <br><br>
+        <a href="{% url 'album' %}" class="btn btn-sm btn-secondary">Retour</a>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

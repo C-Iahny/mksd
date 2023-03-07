@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="container">
+<h1>PDF</h1>
+{% for pdf in files_post %}
+<a href="{{ pdf.file.url }}" download="{{ pdf.file.url }}">{{ pdf.name }}</a>
+{% endfor %}
+</div>
+
+
+{% endblock %}
