@@ -10,6 +10,7 @@ urlpatterns = [
     path('members/', include('members.urls')),
     path('members/', include('django.contrib.auth.urls')),
     path('contact/', include('contact.urls')),
+    path('album/', include('album.urls')),
 
 
     
