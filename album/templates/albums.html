@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<style type="text/css">
+	
+	img {
+		margin-top: 11px;
+		
+	}
+
+</style>
+
+<div class="container my-5">
+    <br />
+<h1>TOUS LES ALBUMS</h1>    <br />
+    <a href="{% url 'add_album' %}" class="btn btn-success btn-sm">Créer Album</a>
+    <br />
+    <hr />
+    <div class="row">
+        {% for album in album_list %}
+        <div class="card m-3" style="width: 18rem;">
+            <img src="{{ album.banner.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 200px;">
+            <div class="card-body">
+                <h5 class="card-title">{{album.title}}</h5>
+                <a href="{% url 'album_detail' album.id %}" class="btn btn-primary btn-sm">Detail</a>
+                <a href="{% url 'addimages' album.pk %}" class="btn btn-secondary btn-sm">Add images</a>
+            </div>
+
+        </div>
+        {% empty %}
+        	<p>No album yet</p>
+         {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

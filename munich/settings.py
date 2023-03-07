@@ -32,11 +32,13 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
 
+    'album',
     'mksd',
     'members',
     'ckeditor',
     'contact',
     #'psycopg2',
+    
 
 
 
@@ -46,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
 
 ]
 
@@ -58,8 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #"whitenoise.middleware.WhiteNoiseMiddleware",
-    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
 
 ROOT_URLCONF = 'munich.urls'
@@ -150,7 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static/')
 ]
 
 

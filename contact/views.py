@@ -112,3 +112,7 @@ def Anmeldebogen(request):
 	else:
 		return render(request, 'anmeldebogen.html', {})
 
+
+def Faq(request):
+	context = {}
+	return render(request, 'faq.html', context)
