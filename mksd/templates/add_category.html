@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}  Category  {% endblock %}
+
+{% block content %}
+
+<div class="container">
+{% if user.is_authenticated %}
+
+	<h1>Add Category</h1>
+
+	<style type="text/css">
+		
+		.container {
+			width: 500px;
+		}
+
+	</style>
+
+
+	<div class="container">
+		<div class="form-group">
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button class="btn btn-primary">Add Category</button>
+				<a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+				
+			</form>
+		</div>
+	</div>
+
+{% else %}
+	<h1>Vous n'êtes pas sensé faire ça et vous le savez non? Kurwa!!!</h1>
+{% endif %}
+</div>
+{% endblock %}

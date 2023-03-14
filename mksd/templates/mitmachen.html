@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	MITMACHEN
+{% endblock title %}
+
+
+{% block content %}
+
+<style type="text/css">
+	.card-header {
+		display: grid;
+	}
+
+</style>
+
+<br><br><br>
+
+<div class="container">
+
+
+		<div class="card">
+		  <div class="card-header">
+		    <h1><small>
+							<img class="logo_mitmachen" src="{% static 'images/LOGO.jpeg' %}" width="150px">
+						</small>MITMACHEN
+				</h1>
+		  </div>
+		  <div class="card-body">
+		    <blockquote class="blockquote mb-0">
+				<p>
+					Wir sind mit seinem ca. 50 Mitfliedern und diese wird rein ehrenamtlich geführt. Diese Bedeutet, dass wir immer Menschen brauchen, die sich aktiv in das Vereinsleben einbringen und in den unterschiedlichen Formen helfen. Du bist bei uns Willkommen, wenn du gerne das Zusammenarbeiten mit Madagassen magst und wenn, du ehrenamtliche Arbeit oder sozialen Engagement suchst. Melde dich hier.
+				</p>  
+				<hr>
+
+				<p>
+					Miisa eoeo amin’ny 50 eo ho eo izahay mpikambana ny MKSD ary asa an-tsitrapo daholo no tontonsainy. Midika izany fa mila olona mandray anjara mavitrika amin’ny fiainanan´ny fivondronana sy ny fanampiana amin’ny fomba maro samihafa izahay. Mandray anao antanan-droa eto amin´ny fivondronanan´ny Tanora Malagasy miara miasa aty ivelany ianao raha tianao ny miara-miasa amin’ny Malagasy ary raha mitady asa an-tsitrapo na asa soa amin’ny fiaraha-monina ianao.
+				</p>    
+				<footer class="blockquote-footer">
+					Geschrieben von 
+					<cite title="Source Title">
+						MKSD Admin
+					</cite>
+				</footer>
+		    </blockquote>
+		  </div>
+		</div>
+
+		<br><br>
+
+		<div class="card">
+			  <div class="card-header">
+			    <h3>Mitglied werden</h3>
+
+			  </div>
+			  <div class="card-body">
+			    	<blockquote class="blockquote mb-0">
+						<p>
+							Wir möchten Sie auch herzlichst dazu einladen, Mitglied bei den MKSD Verein zu werden und über Ihren Mitgliedsbeitrag bzw. durch Ihre aktive Mitarbeit unsere Anliegen und Arbeit zu unterstützen. Bitte füllen Sie die Beitrittserklärung aus und senden diese entweder an unsere Postadresse
+						</p> 
+						<hr>
+
+						<p>
+							Manasa anao am-pitiavana koa izahay raha tia ho tonga mpikambana ao amin’ny MKSD ary hanohana ny fikamabanana amin´ny fanantanterahana ny tanjony ary hiasa amin’ny alàlan’ny saram-pianaranao na amin’ny fandraisanao anjara mavitrika. Fenoy azafady ny fanambaràna ho mpikambana ary andefaso amin’ny adiresy paositra
+						</p>   
+				<footer class="blockquote-footer">
+					Geschrieben von 
+					<cite title="Source Title">
+						MKSD Admin
+					</cite>
+				</footer>
+			    </blockquote>
+			 </div>
+
+			</div>
+				<br>
+			 			{% for pdf in files_post %}
+			 			<h4>{{ pdf.name }}</h4>
+			 			<h3><a href="{{pdf.file.url}}" download="{{ pdf.file.url }}">
+			 			<img src="{{ pdf.image.url }}" style="width: 200px; height:300px;">	
+			 			</a></h3>
+			 			{% endfor %}
+			 	
+
+<br><br><br>
+
+
+
+
+				<div>
+					<h3>Spenden</h3>
+					<hr>
+					<p>
+					Der Verein MKSD finanziert sich als gemeinnütziger Verein überwiegend aus Mitgliedsbeiträgen und Spenden. Sämtliche Arbeiten werden vom Vorstand und von den aktiven Mitgliedern ehrenamtlich geleistet. Um weiterhin effiziente Arbeit für Betroffene leisten zu können, sind wir daher auf Ihre Spenden angewiesen.
+					</p>
+				</div>
+
+				<br>
+
+				<div>
+					<p>
+					Ny vola ikarakarana hetsika rehetra ataon´ny fikambanana MKSD dia tsy inona akory fa azo avy amin´ny tsipaipaika ny mpikambana ary fanomezana avy any amin´ny mafaitra-po. Ny asa rehetra totonsainay dia atao antsitrapo ary tsy angalana tombony. Mba ahafahana manohy sy manantanteraka izany asa izany anefa dia fanomezanao.
+					</p>
+				</div>
+
+				<br><br>
+
+
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="{% static 'images/partnership.webp' %}" max-heigth="50px" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Als Partner werden</h5>
+        <hr>
+        <br><br><br>
+        <p class="card-text">
+			Jeden MKSD Event suchen wir Partner oder Unterstützer die mit uns zusammenarbeiten könnten.
+		</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <img src="{% static 'images/bank.jpg' %}" max-heigth="50px" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Bankverbindung</h5>
+        <hr>
+        <small>
+        <p class="card-text">	
+        	<strong>Deutsche Skatbank </strong><br>
+			Filiale der VR-Bank Altenburger Land eG <br><br>
+			Kontoname: <br> Madagassisches Kultur- und Sporttreffen in Deutschland – MKSD e.V. <br><br>
+			IBAN: <br> 
+			DE 77 8306 5408 0005 2056 20
+			<br>
+			BIC: <br>
+			GENODEF1SLR
+		</p>
+		</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <a href="https://www.google.fr/maps/place/Flughafen-Riem-Straße+61,+81829+München,+Allemagne/@48.1202725,11.5147574,10.96z/data=!4m5!3m4!1s0x479e0b4b37eed1b3:0x2c6d387bd3377d2a!8m2!3d48.1296075!4d11.6860298"><img src="{% static 'images/Adresse.png' %}" max-heigth="50px" class="card-img-top" alt="...">
+      <div class="card-body"></a>
+        <h5 class="card-title">Adresse & Kontakt</h5>
+        <hr>
+        <br><br><br>
+        <p class="card-text">
+        	<a href="https://www.google.fr/maps/place/Flughafen-Riem-Straße+61,+81829+München,+Allemagne/@48.1202725,11.5147574,10.96z/data=!4m5!3m4!1s0x479e0b4b37eed1b3:0x2c6d387bd3377d2a!8m2!3d48.1296075!4d11.6860298" target="_blank">Flughafen-riem-str. 61 </a>
+        	<br> 
+        	München 
+        	<br> <br> 
+        	Email: 
+        	<br> 
+					<div class="wp-block-jetpack-email">
+							<a itemprop="email" href="mailto:fihaonana.malagasy@gmail.com">fihaonana.malagasy@gmail.com
+							</a>
+					</div>
+        	<br>
+					<div class="wp-block-jetpack-phone">
+							<span itemprop="telephone">
+									<a href="tel:004915231726565">
+											004915231726565 
+									</a>
+							</span>
+					</div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+<br>.
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %} Category {% endblock %}
+
+{% block content %}
+
+<div class="container">
+<br>
+    <h1 style="width: 538px; " class="btn btn-secondary">{{cats}}</h1>
+
+    {% for post in category_posts %}
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    {% if post.header_image %}
+                        <a href="{% url 'article-detail' post.pk %}"><img src="{{ post.header_image.url }}" class="img-fluid rounded-start" alt="header_image" ></a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+
+                        <small><h5 class="card-title">
+                                    <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+                                </h5>
+
+                                <a href="{% url 'category' post.category %}"><small>Catégorie: </small><b>{{ post.category }}</b></a></small>
+                            
+                                <p class="card-text">
+                                  {{ post.snippets}}
+                                </p>		
+                                <small>
+                                    By: {{ post.author.first_name }} {{ post.author.last_name }}
+                                </small>
+
+                                {% if user.is_authenticated %}
+                                		{% if user.id == post.author.id %}
+
+                                			<small>
+                                			<a href="{% url 'update_post' post.pk %}">(Edit)</a>
+                                			<a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+                                			<br>
+                                			</small>
+                                		{% endif %}
+
+                            	  {% endif %}
+                        <p class="card-text"><small class="text-muted">{{ post.event_date }}</small></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    {% empty %}
+    <br><br><br>
+    <h4>Mbola tsy misy article eto fa afaka mampiditra vaovao ianao.</h4>
+    
+    <hr>
+    <br>
+    <a href="{% url 'add_post' %}" class="btn btn-sm btn-primary" >Ajouer un post</a>
+    {% endfor %}
+    <a href="{% url 'category-list' %}" class="btn btn-sm btn-secondary">Retour</a>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

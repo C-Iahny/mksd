@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}  Categories  {% endblock title %}
+
+
+
+{% block content %}
+
+<style type="text/css">
+  
+.card {
+  margin-right: 5px;
+}  
+
+img {
+  margin-top: 10px;
+}
+
+
+</style>
+
+
+
+<div class="container my-5">
+    <br/>
+<h1>CATEGORIES</h1>    <br />
+
+    <a href="{% url 'add_category' %}" class="btn btn-success btn-sm">Ajouter catégorie</a>
+    <br />
+    <hr />
+    <div class="row">
+        {% for item in cat_menu_list %}
+        <div class="card m-3" style="width: 18rem;" id="img">
+            <img src="{{ item.img.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 200px;">
+            <div class="card-body">
+                <h5 class="card-title">{{item}}</h5>
+                <a href="{% url 'category' item %}" class="btn btn-primary btn-sm">Detail</a>
+            </div>
+
+        </div>
+        {% empty %}
+          <p>No product yet</p>
+         {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
