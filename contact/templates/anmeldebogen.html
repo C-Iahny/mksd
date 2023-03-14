@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<style type="text/css">
+	
+.container {
+	margin-top: 50px;
+}
+
+textarea {
+	height: 200px;
+}
+
+
+</style>
+
+
+<div class="container">
+{% if team_name %}
+
+	<!----------------- Formular --------------->
+	<div class="card">
+		<div class="card-header">
+		    <h1>
+		    	<small>
+					<img class="logo_mitmachen" src="{% static 'images/LOGO.jpeg' %}" width="150px">
+				</small>
+
+									
+				<h2>Thanks {{ team_name }}</h2>
+				<small>
+				<h4>
+					Votre demande a été pris en compte et <br>
+					un responsable vous contactera.
+				</h4>
+				</small>
+						
+			</h1>
+
+		</div>
+	</div>
+</div>
+
+{% else %}
+
+
+<div class="container">
+
+	<!----------------- Formular --------------->
+	<div class="card">
+		<div class="card-header">
+		    <h1>
+		    	<small>
+					<img class="logo_mitmachen" src="{% static 'mksd/images/LOGO.jpeg' %}" width="150px">
+				</small>
+
+				ANMELDEBOGEN
+			</h1>
+
+		 </div>
+
+		<div class="card-body">
+		  	<blockquote class="blockquote mb-0">
+
+
+				  	<div class="card-header">
+
+
+					    <h5>
+
+							Toll dass ihr DABEI SEID! Hier kannst du dein Team für MKSD anmelden. Wir freuen uns auf euch!
+
+							Mahafinartira ny fandraisareo anjara amin´ny hetsikantsika! Eto no afaka ampidiranao ny anaran´ny ekipa na ny tarikanao! Manantena ny hihaona atoato!
+						</h5>
+					</div>
+					<hr>
+					<br><br>
+
+					<div class="row">
+						<form method="post" class="was-validated">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-lg-6">Team name (erforderlich):
+									<input type="text" name="team-name" class="form-control mb-30" placeholder="Enter a name" required>
+								</div>
+
+							<br><br>
+							<div class="col-lg-6">Email (erforderlich):
+								<input type="email" name="from-email" class="form-control mb-30" placeholder="Your Email" required>
+							</div>
+
+							<div class="col-lg-6">Phone
+								<input type="phone" name="phone" class="form-control mb-30" placeholder=" Ihr Stadt">
+							</div>	
+
+							<div class="col-lg-6">Name (erforderlich):
+								<input type="name" name="name" class="form-control mb-30" placeholder=" Ihr Stadt" required>
+							</div>
+
+							<div class="col-lg-6">Stadt
+								<input type="stadt" name="stadt" class="form-control mb-30" placeholder=" Ihr Stadt">
+							</div>									
+
+							<br><br><br>
+							<div class="col-12">
+								<textarea name="text" class="form-control mb-30" placeholder="text">
+								</textarea>
+							</div>
+							
+							<div class="col-12 my-3">
+								<button type="submit" class="btn btn-success">
+									Anmelden
+								</button>
+							</div>
+
+						</div>
+						</form>
+					</div>
+
+					<div class="row">
+						<div class="card-header">
+							<h1>Kontaktiere uns:</h1>
+							<h5>
+								Mail: 
+								<a itemprop="email" href="mailto:fihaonana.malagasy@gmail.com">fihaonana.malagasy@gmail.com
+				                </a>
+				            </h5>
+
+				            <h5>Tél:<span itemprop="telephone">
+				                <a href="tel:004915231726565">
+				                    004915231726565 
+				                </a>
+				            </h5>
+						</div>
+					</div>
+							
+		
+
+
+    			</blockquote>
+  	</div>
+</div>
+
+<br>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
