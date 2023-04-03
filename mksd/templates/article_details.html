@@ -37,6 +37,7 @@
 	
 
 	<hr>
+	<!----  LIKE BUTTON DISABLED -----
 	<form action="{% url 'like_post' post.pk %}" method="POST">
 		{% csrf_token %}
 
@@ -51,6 +52,7 @@
 			 - {{ total_likes }} Likes 
 		
 	</form>
+	 ------ END LIKE BUTTON DISABLED --------->
 <br>
 
 
