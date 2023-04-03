@@ -9,7 +9,7 @@
 {% block content %}
 
 <h1>Profile d'utilisateur.</h1>
-<a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>
+
 
 
 
@@ -17,6 +17,8 @@
   <div class="row g-0">
     <div class="col-md-2">
 
+	    <a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>
+	    
     	{% if page_user.profile_pic %}
     	  <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_pic">
     	{% else %}
