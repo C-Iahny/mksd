@@ -43,6 +43,8 @@ class Post(models.Model):
 	post_date = models.DateField(auto_now_add=True)
 	category = models.CharField(max_length=255, default='MKSD Events')
 	likes = models.ManyToManyField(User, related_name='mksd_event')
+	images = models.ImageField(blank=True, null=True, upload_to="images/reglo_photo")
+	file = models.FileField(upload_to="files/")
 
 	def total_likes(self):
 		return self.likes.count()
@@ -53,6 +55,13 @@ class Post(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('article-detail', args=[str(self.id)] )
+
+
+class Add_images(models.Model):
+	images = models.ImageField(upload_to="images/cat_event")
+
+	def __str__(self):
+		return self.images 
 
 
 class Comment(models.Model):
