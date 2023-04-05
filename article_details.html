@@ -1,0 +1,632 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}  {{ post.title }}  {% endblock title %}
+
+{% block content %}
+
+
+
+
+<style type="text/css">
+
+.container {
+    display: grid;
+    height: 300vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 1fr 1fr 1.2fr 1.2fr 1.2fr; 
+    grid-template-areas: 
+        "content0 content0 content0 content0 content0 content0"
+        "main main main main main main"
+        "content1 content1  content1 content1 content1 content1"
+        "content5 content5 content5 content5 content5 content5"
+        "content5 content5 content5 content5 content5 content5";
+
+    grid-gap: 0.2rem;
+    font-family: "inter", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #004d40;
+    /*text-align: center;*/
+}
+
+#content0 {
+    background-color: #ffffff;
+    grid-area: content0;
+    padding: 15px;
+}
+
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 25px;
+    margin-left: 25px;
+    justify-content: space-between;
+    box-shadow: 15px;
+    align-items: center;
+    border-color: #121212;
+}
+
+#post_body {
+	background-color: #ffffff;
+	border-radius: 15px;
+	padding: 25px;
+}
+
+
+#content1 {
+    background-color: #;
+    grid-area: content1;
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+
+
+
+#content5 {
+    background-color: #898989;
+    grid-area: content5;
+    padding: 25px;
+    margin-bottom: 35px;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+}
+
+
+@media only screen and (max-width: 850px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 2fr 0.8fr 1.4fr;
+        grid-template-areas: 
+        "content0"
+        "main"
+        "content1"
+        "content5"
+
+    }
+}
+
+
+
+
+/*------------------ 2ND VERSION --------------------------------
+.container {
+	width: 100%;
+    display: grid;
+    height: 200vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 0.5fr 0.1fr 1fr;
+    grid-template-areas:
+    	"main main main main"
+    	"content1 content2 content2 content2"
+    	"content3 content3 content3 content3"
+    	"content4 content4 content4 content4";
+
+    grid-gap: 0.2rem;
+    font-family: "inter", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #004d40;
+
+
+}
+
+main {
+	background-color: #ffffff;
+	grid-area: main;
+	padding: 25px;
+}
+
+#content1 {
+    background-color: #;
+    grid-area: content1;
+    margin-top: 25px;
+}
+
+#content2 {
+    background-color: whitesmoke;
+    grid-area: content2;
+    margin: 25px auto;
+    padding: 55px 25px 25px 25px;
+    border-radius: 25px;
+    align-items: center;
+
+}
+
+
+
+#content3 {
+    grid-area: content3;
+    border-radius: 5px;
+}
+
+#content4 {
+    background-color: #898989;
+    grid-area: content4;
+    padding: 25px;
+    margin-bottom: 35px;
+
+}
+
+
+
+.btn {
+	align-items: center;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+}
+
+
+@media only screen and (max-width: 850px) {
+    .container {
+    	width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 1fr 0.8fr 0.3fr 2fr;
+        grid-template-areas: 
+        "main"
+        "content1"
+        "content2"
+        "content3"
+        "content4"
+
+    }
+
+    iframe {
+    	width: 100%;
+    	height: 100%;
+    }
+
+
+}
+
+
+
+----------------- 2ND VERSION ----------------*/
+
+</style>
+
+
+
+
+
+<!-- HEADER -->
+<br>
+<div class="container">
+    <div id="content0">
+    	<h2>{{ post.title }}</h2><small>
+
+		<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+		<br>
+		By: {{ post.author.first_name }} {{ post.author.last_name }}</small>
+		<small>| {{ post.post_date }}</small>
+
+		{% if user.is_authenticated %}
+			{% if user.id == post.author.id %}
+				<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+				<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+			{% endif %}
+		{% endif %}
+    </div>
+
+    <!-------------------- Main -------------------->
+    <main>
+	    <div id="post_image">
+	    	{% if post.header_image %}
+				<div class="item">
+					<img src="{{ post.header_image.url }}" style="max-width: 45vh; max-height: 100%; border-radius: 25px;">
+				</div>
+			{% endif %}
+	    </div>
+
+	    <div id="post_body">
+				{{ post.body | safe }}
+	    </div>
+
+    </main>
+
+
+
+    <!----------------- Profile Section ------------>
+    <div id="content1">
+    	    	
+
+				<div class="card mb-3">
+				  <div class="row g-0">
+				    <div class="col-md-2">
+
+						    {% if post.author.profile.profile_pic %}
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_picture">
+						      	</a>
+						    {% else %}  
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{% static 'mksd/images/profile_pic.png' %}" class="card-img">
+						      	</a>
+						    {% endif %}
+
+				    </div>
+				    <div class="col-md-10">
+				      <div class="card-body">
+				        <h5 class="card-title">
+						        {{ post.author.first_name }} 
+						    		{{ post.author.last_name }}
+				    	</h5>
+
+
+				        <p class="card-text">
+				        	<small class="text-muted">
+
+				        	<a href="{% url 'show_profile_page' post.author.profile.id %}">
+				        		Profile Page 
+					    		</a>|
+
+				        		{% if post.author.profile.website_url %}
+					        		<a href="{{ user.profile.websit_url }}">Website  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.facebook_url %}
+					        		<a href="{{ user.profile.facebook_url }}">Facebook  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.instagram_url %}
+					        		<a href="{{ user.profile.instagram_url }}">Instagram </a>
+					        	{% endif %}
+
+				        	</small>
+				        </p>
+
+						<p class="card-text">{{ user.profile.biographie }}</p>
+				      </div>
+
+				    </div>
+				  </div>
+				</div>
+				<div class="btn">
+					<a href="{% url 'home' %}" ><button class="btn btn-secondary">Retour</button></a>
+					<button class="btn btn-secondary">Glissez vers le bas pour voir plus</button>
+				</div>
+				
+    </div>
+
+
+
+    <div id="content5">
+    	{% if post.file %}
+	    <iframe src="{{ post.file.url }}" ></iframe>
+    	{% endif %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------- 2ND VERSION -----------------------------------------------
+
+
+
+<br>
+<div class="container">
+    <main>
+		<h2>{{ post.title }}</h2><small>
+
+		<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+		<br>
+		By: {{ post.author.first_name }} {{ post.author.last_name }}</small>
+		<small>| {{ post.post_date }}</small>
+
+		{% if user.is_authenticated %}
+			{% if user.id == post.author.id %}
+				<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+				<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+			{% endif %}
+		{% endif %}
+    </main>
+
+
+    <div id="content1">
+    	{% if post.header_image %}
+			<div class="item">
+				<img src="{{ post.header_image.url }}" style="max-width: 55vh; max-height: 100%; border-radius: 25px;">
+			</div>
+		{% endif %}
+    </div>
+
+    <div id="content2">
+			{{ post.body | safe }}
+    </div>
+
+    <div id="content3">
+    	----- Profile Section ---------
+
+				<div class="card mb-3">
+				  <div class="row g-0">
+				    <div class="col-md-2">
+
+						    {% if post.author.profile.profile_pic %}
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_picture">
+						      	</a>
+						    {% else %}  
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{% static 'mksd/images/profile_pic.png' %}" class="card-img">
+						      	</a>
+						    {% endif %}
+
+				    </div>
+				    <div class="col-md-10">
+				      <div class="card-body">
+				        <h5 class="card-title">
+						        {{ post.author.first_name }} 
+						    		{{ post.author.last_name }}
+				    	</h5>
+
+
+				        <p class="card-text">
+				        	<small class="text-muted">
+
+				        	<a href="{% url 'show_profile_page' post.author.profile.id %}">
+				        		Profile Page 
+					    		</a>|
+
+				        		{% if post.author.profile.website_url %}
+					        		<a href="{{ user.profile.websit_url }}">Website  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.facebook_url %}
+					        		<a href="{{ user.profile.facebook_url }}">Facebook  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.instagram_url %}
+					        		<a href="{{ user.profile.instagram_url }}">Instagram </a>
+					        	{% endif %}
+
+				        	</small>
+				        </p>
+
+						<p class="card-text">{{ user.profile.biographie }}</p>
+				      </div>
+
+				    </div>
+				  </div>
+				</div>
+				<div class="btn">
+					<a href="{% url 'home' %}" ><button class="btn btn-secondary">Retour</button></a>
+					<button class="btn btn-secondary">Glissez vers le bas pour voir plus</button>
+				</div>
+				<br><br>	
+    </div>
+
+    <div id="content4">
+    	<iframe src="{{ post.file.url }}" >PDF FILE</iframe>
+    </div>
+
+</div>
+
+----------------------- END 2ND VERSION -------------------------------------------------->
+
+
+<!----------------------------------  ORIGINAL DESIGNE ----------------------------------->
+
+
+
+<!--
+    	{% if post.file %}
+    		<iframe src="{{ post.file.url }}" >PDF FILE</iframe>
+    	{% else %}
+    		<h1>PDF VIEWER</h1>
+    	{% endif %}
+<style type="text/css">
+	
+.container_001 {
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+	justify-content: space-evenly;
+	align-items: center; /* afaka ovaina hoe: end, center, start, etc... */
+}
+
+.item {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.container_002 {
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+	justify-content: space-evenly;
+	align-items: center; /* afaka ovaina hoe: end, center, start, etc... */
+}
+
+
+
+
+
+</style>
+
+
+
+------
+<small>current user: {{ user.id }}<br></small>
+<small>post author: {{ post.author.id }}</small>
+---
+<br>
+<div class="container">
+			<h2>{{ post.title }}</h2><small>
+	
+					<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+					<br>
+					By: {{ post.author.first_name }} {{ post.author.last_name }}</small>
+					<small>| {{ post.post_date }}</small>
+
+					{% if user.is_authenticated %}
+						{% if user.id == post.author.id %}
+							<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+							<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+						{% endif %}
+					{% endif %}
+					<br>
+					<hr>
+
+					{% if post.header_image %}
+					<div class="container_001">
+								<div class="item">
+									<img src="{{ post.header_image.url }}" style="max-width: 55vh; max-height: 100%;">
+								</div>
+								{% endif %}
+								<br>
+								<div class="item">
+								{{ post.body | safe }}
+								</div>
+					</div>
+					<hr>
+
+					<--
+
+					<hr>
+					<form action="{% url 'like_post' post.pk %}" method="POST">
+						{% csrf_token %}
+
+							{% if liked %}
+							<button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger">Unlike</button>
+
+							{% else %}
+							<button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary">Like</button>
+							{% endif %}
+
+							 - {{ total_likes }} Likes 
+							
+					</form>
+					--
+				<br>
+
+
+----- Profile Section ---------
+
+				<div class="card mb-3">
+				  <div class="row g-0">
+				    <div class="col-md-2">
+
+						    {% if post.author.profile.profile_pic %}
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_picture">
+						      	</a>
+						    {% else %}  
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{% static 'mksd/images/profile_pic.png' %}" class="card-img">
+						      	</a>
+						    {% endif %}
+
+				    </div>
+				    <div class="col-md-10">
+				      <div class="card-body">
+				        <h5 class="card-title">
+						        {{ post.author.first_name }} 
+						    		{{ post.author.last_name }}
+				    	</h5>
+
+
+				        <p class="card-text">
+				        	<small class="text-muted">
+
+				        	<a href="{% url 'show_profile_page' post.author.profile.id %}">
+				        		Profile Page 
+					    		</a>|
+
+				        		{% if post.author.profile.website_url %}
+					        		<a href="{{ user.profile.websit_url }}">Website  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.facebook_url %}
+					        		<a href="{{ user.profile.facebook_url }}">Facebook  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.instagram_url %}
+					        		<a href="{{ user.profile.instagram_url }}">Instagram </a>
+					        	{% endif %}
+
+				        	</small>
+				        </p>
+
+						<p class="card-text">{{ user.profile.biographie }}</p>
+				      </div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>
+				<br><br>
+
+-------- REGLE ET PHOTOS --------------
+
+				<div class="container_002">
+					<div class="item">
+						<h1>PHOTOS</h1>
+						<div class="card-body">
+							{% if post.images %}
+							<img src="{{ post.images.url }}" style="width: 65%;  height: 65%;">
+							{% else %}
+								<a href="{% url 'add_images' %}"><button class="btn btn-primary">Add images</button></a>
+							{% endif %}
+							
+						</div>
+					</div>
+
+
+					<div class="item">
+						<h1>REGLEMENTS </h1>
+						{{ post.file.url }}
+					</div>
+				</div>
+
+
+
+
+
+
+--------  Comment Section -------------
+
+					<h1>Comments...</h1>
+					<br>
+					<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+					<br><br>
+
+				{% if not post.comments.all %}
+					Pas de commentaire encore. Click <a href="{% url 'add_comment' post.pk %}">ici</a> pour en faire un.
+				{% else %}
+
+					{% for comment in post.comments.all %}
+						<strong><small>
+							{{ comment.name }} |
+							{{ comment.date_added }}
+						</small>
+						</strong>
+						<br>
+							{{ comment.body }}
+						<br><br>
+					{% endfor %}
+
+				{% endif %}
+
+				<br><br>
+					<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+
+				<br><br>
+</div>
+
+
+
+------>
+
+
+{% endblock %}
