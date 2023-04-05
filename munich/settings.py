@@ -150,24 +150,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# Static asset configuration
-"""
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR/, 'static')
+    os.path.join(BASE_DIR, 'static/')
 ]
-"""
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
-STATICFILES_FINDERS = [
- "django.contrib.staticfiles.finders.FileSystemFinder",
- "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-   ]
 
 
 CSRF_TRUSTED_ORIGINS = ['https://*.','https://*.127.0.0.1']
@@ -191,9 +178,9 @@ DEFAULT_FROM_EMAIL = 'default from email'
 
 
 
+
+
 X_FRAME_OPTIONS = "SAMEORIGIN"
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

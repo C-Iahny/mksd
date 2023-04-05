@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style type="text/css">
+
+.container_index {
+    display: grid;
+    height: 300vh;
+    grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1.2fr 8fr 2fr 1.2fr 1.2fr 1.2fr 12fr 10fr 10fr 10fr; 
+    grid-template-areas: 
+        "sidebar main main main main main main"
+        "sidebar main main main main main main"
+        "sidebar main main main main main main"
+        "sidebar main main main main main main"
+        "sidebar main main main main main main"
+        "sidebar  content1 content1  content1 content1 content1 content1"
+        "sidebar content2 content2 content3 content3 content4 content4"
+        "sidebar  content5 content5 content5 content5 content5 content5"
+        "sidebar  content6 content6 content6 content6 content6 content6"
+        "sidebar  content7 content7 content7 content7 content7 content7";
+
+    grid-gap: 0.2rem;
+    font-family: "inter", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #004d40;
+    text-align: center;
+}
+
+
+
+main {
+    background-color: #a7ffeb;
+    grid-area: main;
+}
+
+#sidebar {
+    background-color: #ffffff;
+    grid-area: sidebar;
+}
+
+#content1 {
+    background-color: #ffffff;
+    grid-area: content1;
+}
+
+#content2 {
+    background-color: #18ffff;
+    grid-area: content2;
+}
+
+#content3 {
+    background-color: #6fffd2;
+    grid-area: content3;
+}
+
+#content4 {
+    background-color: #18ffff;
+    grid-area: content4;
+}
+
+#content5 {
+    background-color: #6fffd2;
+    grid-area: content5;
+}
+
+#content6 {
+    background-color: #18ffff;
+    grid-area: content6;
+}
+
+#content7 {
+    background-color: #6fffd2;
+    grid-area: content7;
+}
+
+
+@media only screen and (max-width: 850px) {
+    .container_index {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 4.8fr 0.4fr 2.4fr 2.4fr  2.4fr 2.4fr 2.4fr 2.4fr;
+        grid-template-areas: 
+        "sidebar"
+        "main"
+        "content1"
+        "content2"
+        "content3"
+        "content4"
+        "content5"
+        "content6"
+        "content7"
+
+    }
+}
+
+</style>
+
+
+<!-- HEADER -->
+<br>
+<div class="container_index">
+    <main>Main</main>
+    <div id="sidebar">Sidebar</div>
+    <div id="content1">Content1</div>
+    <div id="content2">Content2</div>
+    <div id="content3">Content3</div>
+    <div id="content4">Content4</div>
+    <div id="content5">Content5</div>
+    <div id="content6">Content6</div>
+    <div id="content7">Content7</div>
+</div>
+
+
+{% endblock content %}

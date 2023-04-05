@@ -3,6 +3,8 @@
 {% block title %}  {{ post.title }}  {% endblock title %}
 
 {% block content %}
+
+
 <style type="text/css">
 
 .container {
@@ -53,7 +55,6 @@ main {
     grid-area: content3;
     border-radius: 5px;
 }
-
 
 #content4 {
     background-color: #ffffff;
@@ -170,4 +171,221 @@ iframe {
     </div>
 
 </div>
-{% endblock content %}
+
+
+
+
+<!----------------------------------  ORIGINAL DESIGNE ----------------------------------->
+
+
+
+<!--
+    	{% if post.file %}
+    		<iframe src="{{ post.file.url }}" >PDF FILE</iframe>
+    	{% else %}
+    		<h1>PDF VIEWER</h1>
+    	{% endif %}
+<style type="text/css">
+	
+.container_001 {
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+	justify-content: space-evenly;
+	align-items: center; /* afaka ovaina hoe: end, center, start, etc... */
+}
+
+.item {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.container_002 {
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+	justify-content: space-evenly;
+	align-items: center; /* afaka ovaina hoe: end, center, start, etc... */
+}
+
+
+
+
+
+</style>
+
+
+
+------
+<small>current user: {{ user.id }}<br></small>
+<small>post author: {{ post.author.id }}</small>
+---
+<br>
+<div class="container">
+			<h2>{{ post.title }}</h2><small>
+	
+					<small><a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+					<br>
+					By: {{ post.author.first_name }} {{ post.author.last_name }}</small>
+					<small>| {{ post.post_date }}</small>
+
+					{% if user.is_authenticated %}
+						{% if user.id == post.author.id %}
+							<small><a href="{% url 'update_post' post.pk %}">(Edit)</a></small>
+							<small><a href="{% url 'delete_post' post.pk %}">(Delete)</a></small>
+						{% endif %}
+					{% endif %}
+					<br>
+					<hr>
+
+					{% if post.header_image %}
+					<div class="container_001">
+								<div class="item">
+									<img src="{{ post.header_image.url }}" style="max-width: 55vh; max-height: 100%;">
+								</div>
+								{% endif %}
+								<br>
+								<div class="item">
+								{{ post.body | safe }}
+								</div>
+					</div>
+					<hr>
+
+					<--
+
+					<hr>
+					<form action="{% url 'like_post' post.pk %}" method="POST">
+						{% csrf_token %}
+
+							{% if liked %}
+							<button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger">Unlike</button>
+
+							{% else %}
+							<button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary">Like</button>
+							{% endif %}
+
+							 - {{ total_likes }} Likes 
+							
+					</form>
+					--
+				<br>
+
+
+----- Profile Section ---------
+
+				<div class="card mb-3">
+				  <div class="row g-0">
+				    <div class="col-md-2">
+
+						    {% if post.author.profile.profile_pic %}
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_picture">
+						      	</a>
+						    {% else %}  
+						    		<a href="{% url 'show_profile_page' post.author.profile.id %}">
+						      		<img src="{% static 'mksd/images/profile_pic.png' %}" class="card-img">
+						      	</a>
+						    {% endif %}
+
+				    </div>
+				    <div class="col-md-10">
+				      <div class="card-body">
+				        <h5 class="card-title">
+						        {{ post.author.first_name }} 
+						    		{{ post.author.last_name }}
+				    	</h5>
+
+
+				        <p class="card-text">
+				        	<small class="text-muted">
+
+				        	<a href="{% url 'show_profile_page' post.author.profile.id %}">
+				        		Profile Page 
+					    		</a>|
+
+				        		{% if post.author.profile.website_url %}
+					        		<a href="{{ user.profile.websit_url }}">Website  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.facebook_url %}
+					        		<a href="{{ user.profile.facebook_url }}">Facebook  </a>|
+					        	{% endif %}
+				        		{% if post.author.profile.instagram_url %}
+					        		<a href="{{ user.profile.instagram_url }}">Instagram </a>
+					        	{% endif %}
+
+				        	</small>
+				        </p>
+
+						<p class="card-text">{{ user.profile.biographie }}</p>
+				      </div>
+
+				    </div>
+				  </div>
+				</div>
+
+				<a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>
+				<br><br>
+
+-------- REGLE ET PHOTOS --------------
+
+				<div class="container_002">
+					<div class="item">
+						<h1>PHOTOS</h1>
+						<div class="card-body">
+							{% if post.images %}
+							<img src="{{ post.images.url }}" style="width: 65%;  height: 65%;">
+							{% else %}
+								<a href="{% url 'add_images' %}"><button class="btn btn-primary">Add images</button></a>
+							{% endif %}
+							
+						</div>
+					</div>
+
+
+					<div class="item">
+						<h1>REGLEMENTS </h1>
+						{{ post.file.url }}
+					</div>
+				</div>
+
+
+
+
+
+
+--------  Comment Section -------------
+
+					<h1>Comments...</h1>
+					<br>
+					<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+					<br><br>
+
+				{% if not post.comments.all %}
+					Pas de commentaire encore. Click <a href="{% url 'add_comment' post.pk %}">ici</a> pour en faire un.
+				{% else %}
+
+					{% for comment in post.comments.all %}
+						<strong><small>
+							{{ comment.name }} |
+							{{ comment.date_added }}
+						</small>
+						</strong>
+						<br>
+							{{ comment.body }}
+						<br><br>
+					{% endfor %}
+
+				{% endif %}
+
+				<br><br>
+					<a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+
+				<br><br>
+</div>
+
+
+
+------>
+
+
+{% endblock %}
