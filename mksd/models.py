@@ -43,7 +43,6 @@ class Post(models.Model):
 	post_date = models.DateField(auto_now_add=True)
 	category = models.CharField(max_length=255, default='MKSD Events')
 	likes = models.ManyToManyField(User, related_name='mksd_event')
-	images = models.ImageField(blank=True, null=True, upload_to="images/reglo_photo")
 	file = models.FileField(upload_to="files/")
 
 	def total_likes(self):
