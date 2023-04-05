@@ -19,6 +19,11 @@
 	margin-bottom: 15px;
 }
 
+.item {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 
 
 
@@ -49,18 +54,18 @@
 	<hr>
 
 	{% if post.header_image %}
-		<div class="container_001">
-			<div class="item">
-				<img src="{{ post.header_image.url }}" style="max-width: 55vh; max-height: 100%;">
-			</div>
+	<div class="container_001">
+		<div class="item">
+			<img src="{{ post.header_image.url }}" style="max-width: 55vh; max-height: 100%;">
+		</div>
 	{% endif %}
 			<br>
 			
-			<div class="item">
-				{{ post.body | safe }}
-			</div>
+		<div class="item">
+			{{ post.body | safe }}
 		</div>
-		<hr>
+	</div>
+	<hr>
 	
 
 	<hr>
