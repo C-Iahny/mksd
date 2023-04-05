@@ -2,168 +2,147 @@
 {% load static %}
 
 
+
+
 {% block content %}
 
 <style type="text/css">
-
-.row {
-	margin-top: 25px;
-	width: 100%;
-	margin-right: 5px;
-
-}	
-
-.content {
-	display: flex;
-}
-
-.formular {
-	width: 100%;
-	display: flex;
-}
-
-.text_area {
-	height: 250px;
+	
+.container {
+	margin-top: 50px;
 }
 
 textarea {
-	height: 250px;
+	height: 200px;
 }
+
 
 </style>
 
-				
+
 <div class="container">
-	{% if message_name %}
-	<br><br>
-	<center>
-		<h1>Merci {{ message_name }}</h1>
-		<h4>Votre message a été bien pris en compte.</h4>
-		<a class="btn btn-secondary" href="{% url 'contact' %}">Retour</a>
-	</center>
+{% if team_name %}
 
-	{% else %}
-
-
-		<br><br>
-			<div class="card">
+	<!----------------- Formular --------------->
+	<div class="card">
 		<div class="card-header">
 		    <h1>
 		    	<small>
 					<img class="logo_mitmachen" src="{% static 'images/LOGO.jpeg' %}" width="150px">
 				</small>
 
-				KONTAKT
+									
+				<h2>Thanks {{ team_name }}</h2>
+				<small>
+				<h4>
+					Votre demande a été pris en compte et <br>
+					un responsable vous contactera.
+				</h4>
+				</small>
+						
+			</h1>
+
+		</div>
+	</div>
+</div>
+
+{% else %}
+
+
+<div class="container">
+
+	<!----------------- Formular --------------->
+	<div class="card">
+		<div class="card-header">
+		    <h1>
+		    	<small>
+					<img class="logo_mitmachen" src="{% static 'mksd/images/LOGO.jpeg' %}" width="150px">
+				</small>
+
+				Kontakt
 			</h1>
 
 		 </div>
 
-
-		<div class="card"> 
-			<div class="card-header">
-					<div>
-				<h5>
-				Lass uns darüber reden 👋 Du erreichst uns einfach über die Kontaktangaben weiter unten. Über das Formular kannst du uns auch eine Nachricht. Für Anmeldung auf unsere Newsletter, bitte hier klicken.
-				<br><br>
-
-				Misaotra anao sahady amin´ny hafatra alefanao.Raha te hiara hiasa na handefa hafatra anay ianao na ny orinasanao dia aza misalasala mameno eto.<br>Raha te hiditra amin´ny Newsletter enao dia fenoy eto azafady.
-				</h5>
-					</div>
-				</div>
-		</div>
-
-
-
-		<!------------------ MAP ------------------>
 		<div class="card-body">
 		  	<blockquote class="blockquote mb-0">
 
 
-				<div class="card-header">
+				  	<div class="card-header">
 
-					<div class="formular">
 
-						<div class="row">
+					    <h5>
 
+							Toll dass ihr DABEI SEID! Hier kannst du uns kontaktieren. Wir freuen uns auf dich!
+							<br><br>
+							Mahafinartira ny fandraisareo anjara! Eto no afaka ifandraisanao aminay mivantana.
+						</h5>
+					</div>
+					<hr>
+					<br><br>
+
+					<div class="row">
+						<form method="post" class="was-validated">
+							{% csrf_token %}
+
+							<div class="col-lg-6">Email (erforderlich):
+								<input type="email" name="from-email" class="form-control mb-30" placeholder="Your Email" required>
+							</div>
+
+							<div class="col-lg-6">Phone
+								<input type="phone" name="phone" class="form-control mb-30" placeholder="yours">
+							</div>	
+
+							<div class="col-lg-6">Name (erforderlich):
+								<input type="name" name="name" class="form-control mb-30" placeholder="Name" required>
+							</div>
+
+							<div class="col-lg-6">Stadt
+								<input type="stadt" name="stadt" class="form-control mb-30" placeholder=" City">
+							</div>									
+
+							<br><br><br>
 							<div class="col-12">
-								<div class="google-maps mb-100">
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.0252583111956!2d11.684521515648674!3d48.12903627922276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e0b4b37eed1b3%3A0x2c6d387bd3377d2a!2sFlughafen-Riem-Stra%C3%9Fe%2061%2C%2081829%20M%C3%BCnchen%2C%20Allemagne!5e0!3m2!1sfr!2sfr!4v1662929127852!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-								</div>
+								<textarea name="text" class="form-control mb-30" placeholder="text">
+								</textarea>
+							</div>
+							
+							<div class="col-12 my-3">
+								<button type="submit" class="btn btn-success">
+									Send
+								</button>
 							</div>
 
 						</div>
+						</form>
+					</div>
 
+					<div class="row">
+						<div class="card-header">
+							<h1>Kontaktiere uns:</h1>
+							<h5>
+								Mail: 
+								<a itemprop="email" href="mailto:fihaonana.malagasy@gmail.com">fihaonana.malagasy@gmail.com
+				                </a>
+				            </h5>
 
-
-
-						<!----------------- Formular --------------->
-
-						<div class="row">
-							<form method="post" class="was-validated">
-								{% csrf_token %}
-								<div class="row">
-									<div class="col-lg-6">
-										<input type="text" name="message-name" class="form-control mb-30" placeholder="Your name" required>
-									</div>
-
-									<div class="col-lg-6">
-										<input type="ville" name="ville" class="form-control mb-30" placeholder=" Ihr Stadt" required>
-									</div>
-									<br><br>
-									<div class="col-lg-12">
-										<input type="email" name="from-email" class="form-control mb-30" placeholder="Your Email" required>
-									</div>
-									<br><br>
-									<div class="col-12">
-										<textarea name="message" class="form-control mb-30" placeholder="{% if message_name %} {{ message_name }} {% endif %}">
-										</textarea>
-									</div>
-									
-									<div class="col-12 my-3">
-										<button type="submit" class="btn btn-success">
-											Send Message
-										</button>
-									</div>
-
-								</div>
-							</form>
+				            <h5>Tél:<span itemprop="telephone">
+				                <a href="tel:004915231726565">
+				                    004915231726565 
+				                </a>
+				            </h5>
 						</div>
 					</div>
+							
+		
 
-				</div>
 
-				<!-------- Contact information ---------->
-
-				<div class="#">
-					<div class="col-12 col-md-4">
-						<h5>Adresse</h5>
-						<p>Flughafen-Riem-Strasse 61</p>
-						<p>81829 München, Deutschland</p>
-
-						<h5>Email</h5>
-						<p>fihaonana.malagasy@gmail.com</p>
-
-						<h5>Telefon</h5>
-						<p>+4915231726565</p>
-					</div>
-				</div>
-			</blockquote>
-		</div>
-
-    	
+    			</blockquote>
   	</div>
+</div>
 
-
-
-
+<br>
 {% endif %}
-
-
-
-
-
-
-
 
 {% endblock %}
 
@@ -171,112 +150,3 @@ textarea {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		{% if message_name %}
-		<h5>Merci à vous {{ message_name }}.</h5>
-		
-		<br>
-		<p> Votre message a été bien pris en compte et un responsable va vous répondre dans le plus bref délai.</p>
-
-			<a class="btn btn-secondary" href="{% url 'home' %}">Retour</a>
-		{% else %}
-		
-	</div>
-	
-</div>
-
-<br>
-
-<center>
-	<h1>Kontakt</h1>
-
-
-</center>
-<br><br>
-
-	<div class="container">
-		<div class="row">
-
-			<div class="col-12">
-				<div class="google-maps mb-100">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.0252583111956!2d11.684521515648674!3d48.12903627922276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e0b4b37eed1b3%3A0x2c6d387bd3377d2a!2sFlughafen-Riem-Stra%C3%9Fe%2061%2C%2081829%20M%C3%BCnchen%2C%20Allemagne!5e0!3m2!1sfr!2sfr!4v1662929127852!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-			</div>
-
-
-
-
-
-		<div class="row">
-			<!-------- Contact information ---------->
-			<div class="col-12 col-md-4">
-				<h5>Adresse</h5>
-				<p>Flughafen-Riem-Strasse 61</p>
-				<p>81829 München, Deutschland</p>
-
-				<h5>Email</h5>
-				<p>fihaonana.malagasy@gmail.com</p>
-
-				<h5>Telefon</h5>
-				<p>+4915231726565</p>
-			</div>
-		</div>
-						
-
-
-					<!------------ Form ----------------------->
-
-				<div class="row">
-				<form method="post" class="was-validated">
-					{% csrf_token %}
-					<div class="row">
-						<div class="col-lg-6">
-							<input type="text" name="message-name" class="form-control mb-30" placeholder="Your name" required>
-						</div>
-
-						<div class="col-lg-6">
-							<input type="email" name="from-email" class="form-control mb-30" placeholder="Your Email" required>
-						</div>
-
-						<div class="col-lg-6">
-							<input type="ville" name="ville" class="form-control mb-30" placeholder=" Ihr Stadt" required>
-						</div>
-
-
-						<div class="col-12">
-							<textarea name="message" class="form-control mb-30" placeholder="Your Message">
-							</textarea>
-						</div>
-						
-						<div class="col-12">
-							<button type="submit" class="btn btn-success">
-								Send Message
-							</button>
-						</div>
-
-					</div>
-				</form>
-			</div>
-
-
-
-		</div>
-	</div>
-<br>
-{% endif %}
