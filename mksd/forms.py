@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, Add_images
 
 
 #choices = [('sport', 'sport'), ('kultur', 'kultur')]
@@ -13,7 +13,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post 
-		fields = ('title', 'author', 'category', 'body', 'snippet', 'header_image')
+		fields = ('title', 'author', 'category', 'body', 'snippet', 'header_image', 'file')
 
 		widgets = {
 
@@ -23,8 +23,19 @@ class PostForm(forms.ModelForm):
 			'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
-			'header_image': forms.FileInput(),
+			'header_image': forms.FileInput(attrs={'class': 'form-control'}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
 
+		}
+
+
+class Add_images(forms.ModelForm):
+	class Meta:
+		model = Add_images
+		fields = ('images',)
+
+		widgets = {
+			'images': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 
 
