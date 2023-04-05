@@ -191,7 +191,7 @@ DEFAULT_FROM_EMAIL = 'default from email'
 
 
 
-
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
 
