@@ -434,7 +434,9 @@ iframe {
     </div>
 
     <div id="content4">
+	{% if post.file %}
     	<iframe src="{{ post.file.url }}" >PDF FILE</iframe>
+	{% endif %}
     </div>
 
 </div>
