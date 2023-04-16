@@ -6,25 +6,70 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.http import FileResponse, Http404
 from django.shortcuts import render, redirect
+from album.models import Album
+from .models import Neuigkeit, Live, Mitmachen
 
 
 #def home(request):
 #	return render(request, 'home.html', {})
 
+#-------------------------- IndexView -------------------------------
+
+
 class IndexView(ListView):
 	model = Post
+	neu = Neuigkeit
+	live = Live
+	collab = Mitmachen
 	template_name = 'index.html'
 	ordering = ['-post_date']
 	ordering = ['-id']
 
+
 	def get_context_data(self, *args, **kwargs):
+		post = Post.objects.all()
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
+		context["post"] = post
+		ordering = ['-post_date']
+		ordering = ['-id']
+
+
+		#☺ listes sur les menus en haut-----------------
 		cat_menu = Category.objects.all()
 		context = super(IndexView, self).get_context_data(*args, **kwargs)
 		context["cat_menu"] = cat_menu
-		return context
 
 
+		neu_list = Neuigkeit.objects.all()
+		context_002 = super(IndexView, self).get_context_data(*args, **kwargs)
+		context_002["neu_list"] = neu_list
+		ordering = ['-neu_date']
+		ordering = ['-id']
 
+		live_list = Live.objects.all()
+		context_003 = super(IndexView, self).get_context_data(*args, **kwargs)
+		context_003["live_list"] = live_list
+		ordering = ['-live_date']
+		ordering = ['-id']
+
+		mitmachen_list = Mitmachen.objects.all()
+		context_004 = super(IndexView, self).get_context_data(*args, **kwargs)
+		context_004["mitmachen_list"] = mitmachen_list
+		ordering = ['-mit_date']
+		ordering = ['-id']
+
+		return {
+			"post": post, 
+			"cat_menu": cat_menu, 
+			"neu_list": neu_list, 
+			"live_list": live_list, 
+			"mitmachen_list": mitmachen_list 
+		}
+
+	
+
+
+#-------------------------- End IndexView -----------------------------
 
 class AddCommentView(CreateView):
 	model = Comment
@@ -149,7 +194,11 @@ class DeletePostView(DeleteView):
 class Add_Images(TemplateView):
 	model = Add_images
 	template_name = "add_images.html"
+	fields = '__all__'
 
+
+
+"""
 	def post(self, *args, **kwargs):
 		try:
 			images = self.request.FILES.getlist('images')
@@ -162,7 +211,7 @@ class Add_Images(TemplateView):
 			return redirect('home')
 		except ValueError as e:
 			print(e)
-		"""
+		
 		except images.DoesNotExist as e:
 			print(e)
 		"""

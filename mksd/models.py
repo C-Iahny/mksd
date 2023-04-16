@@ -43,7 +43,7 @@ class Post(models.Model):
 	post_date = models.DateField(auto_now_add=True)
 	category = models.CharField(max_length=255, default='MKSD Events')
 	likes = models.ManyToManyField(User, related_name='mksd_event')
-	file = models.FileField(upload_to="files/")
+	file = models.FileField(blank=True, null=True, upload_to="files/")
 
 	def total_likes(self):
 		return self.likes.count()
@@ -73,8 +73,35 @@ class Comment(models.Model):
 		return '%s - %s' % (self.post.title, self.name)
 
 
+# ------------------- TROIS COLONNES -------------------------
+
+class Neuigkeit(models.Model):
+	title = models.CharField(max_length=255)
+	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
+	file = models.FileField(blank=True, null=True, upload_to="files/actus")
+	neu_date = models.DateField(auto_now_add=True)
+	
+	def __str__(self):
+		return self.title
+
+class Live(models.Model):
+	title = models.CharField(max_length=255)
+	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
+	file = models.FileField(blank=True, null=True, upload_to="files/actus")
+	live_date = models.DateField(auto_now_add=True)
+
+	def __str__(self):
+		return self.title
 
 
+class Mitmachen(models.Model):
+	title = models.CharField(max_length=255)
+	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
+	file = models.FileField(blank=True, null=True, upload_to="files/actus")
+	mit_date = models.DateField(auto_now_add=True)
+
+	def __str__(self):
+		return self.title
 
 
 

@@ -6,6 +6,7 @@
 <style type="text/css">
 
 .container_index {
+    background-image: url("images/background-image.webp");
     display: grid;
     height: 300vh;
     grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -33,48 +34,117 @@
 
 
 main {
-    background-color: #a7ffeb;
     grid-area: main;
+    background-image: url("images/logo.jpeg");
+}
+
+h1 {
+    color: orangered;
+    font-weight: bolt;
+    font: italic 1.2em "Fira Sans", serif;
+    font-size: 95px;
+    font-weight: 15px;
+}
+
+h3 {
+    color: blueviolet;
+    font-weight: bolt;
+    font: italic 1.2em "Fira Sans", serif;
+    font-size: 55px;
 }
 
 #sidebar {
-    background-color: #ffffff;
+    background-color: #333333;
     grid-area: sidebar;
 }
 
 #content1 {
-    background-color: #ffffff;
+    background-color: #333333;
     grid-area: content1;
+    border-radius: 85px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 #content2 {
-    background-color: #18ffff;
+    background-color: #777;
+    color: #fff;
+    opacity: 0.;
     grid-area: content2;
+    border-radius: 15px;
+
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.item {
+    background-color: #fff;
+    justify-content: center;
+    margin-left: 15px;
+    width: 95%;
+    height: 94%;
+    justify-content: center;
 }
 
 #content3 {
-    background-color: #6fffd2;
+    color: #fff;
+    background-color: #777;
     grid-area: content3;
+    border-radius: 15px;
+
 }
 
 #content4 {
-    background-color: #18ffff;
+    color: #fff;
+    background-color: #777;
     grid-area: content4;
+    border-radius: 15px;
+
 }
 
 #content5 {
-    background-color: #6fffd2;
+    color: #fff;
+    background-color: #555;
     grid-area: content5;
+    border-radius: 125px;
+    margin: 35px 75px;
+    padding: 55px;
+    -webkit-box-shadow: 5px 7px 5px 1px #f3f3f3; 
+    box-shadow: 5px 7px 5px 1px #fffffff;
+
+
 }
 
 #content6 {
-    background-color: #18ffff;
+    color: #fff;
+    background-color: #555;
     grid-area: content6;
+    border-radius: 125px;
+    margin: 35px 75px;
+    padding: 55px;
+    -webkit-box-shadow: 5px 7px 5px 1px #CC2200; 
+    box-shadow: 5px 7px 5px 1px #fffffff;
+
+
 }
 
 #content7 {
-    background-color: #6fffd2;
+    font: italic 1.2em "Fira Sans", serif;
+    color: #fff;
+    background-color: #555;
     grid-area: content7;
+    border-radius: 125px;
+    margin: 35px 75px;
+    padding: 55px;
+    -webkit-box-shadow: 5px 7px 5px 1px #158000; 
+    box-shadow: 5px 7px 5px 1px #fffffff;
+}
+
+a {
+    color: #fff;
 }
 
 
@@ -94,6 +164,14 @@ main {
         "content7"
 
     }
+
+    .item {
+        height: 90%;
+        background-size: cover;
+    }
+
+
+
 }
 
 </style>
@@ -102,15 +180,107 @@ main {
 <!-- HEADER -->
 <br>
 <div class="container_index">
-    <main>Main</main>
-    <div id="sidebar">Sidebar</div>
-    <div id="content1">Content1</div>
-    <div id="content2">Content2</div>
-    <div id="content3">Content3</div>
-    <div id="content4">Content4</div>
-    <div id="content5">Content5</div>
-    <div id="content6">Content6</div>
-    <div id="content7">Content7</div>
+    <!----------------------------- SLIDE IMAGES ---------------------------->
+    <main>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExamoleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExamoleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExamoleCaptions" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                {% for post in post %}
+                <a href="{% url 'article-detail' post.pk %}">
+                    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
+                        <img src="{{ post.header_image.url }}" style="height: 685px;" class="img-fluid d-block w-100" alt="foto">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="animate__animated
+                                {% if forloop.counter0 == 0 %}
+                                animate__fadeInDown
+                                {% endif %}
+
+                                {% if forloop.counter == 1 %}
+                                animate__slideInDown
+                                {% endif %}
+
+                                {% if forloop.counter == 2 %}
+                                animate__zoomIn
+                                {% endif %}">
+                                    {{ post.title }}
+                            </h1>
+
+                            <h3>{{ post.snippet }}</h3>
+                            <button class="btn btn-secondary"><a href="{% url 'article-detail' post.pk %}">Détail</a></button>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+
+    <div id="sidebar"></div>
+    <div id="content1">
+        <!-- Facebook -->
+        <i class="fab fa-facebook-f fa-2x" style="color: #fff;"></i>
+    </div>
+
+    <div id="content2">Neuigkeiten
+        <div class="item">
+            {% for neu in neu_list|slice:1 %}
+                {% if neu.image %}
+                    <img src="{{ neu.image.url }}" style="width: 100%; height: 100%;">
+                {% endif %}
+                {% if neu.file %}
+                    <iframe src="{{ neu.file.url }}" style="width: 100%; height: 100%;"></iframe>
+                
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content3">MKSD Live
+        <div class="item">
+            {% for liv in live_list|slice:1 %}
+                {% if liv.image %}
+                    <img src="{{ liv.image.url }}" style="width: 100%; height: 100%;">
+                {% endif %}
+                {% if liv.file %}
+                    <iframe src="{{ liv.file.url }}" style="width: 100%; height: 100%;"></iframe>
+                
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="content4">SEI DABEI
+        <div class="item">
+            {% for mit in mitmachen_list|slice:1 %}
+                {% if mit.image %}
+                    <img src="{{ mit.image.url }}" style="width: 100%; height: 100%;">
+                {% endif %}
+                {% if mit.file %}
+                    <iframe src="{{ mit.file.url }}" style="width: 100%; height: 100%;"></iframe>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="content5">MITMACHEN
+        
+    </div>
+
+    <div id="content6">UNTERSTÜTZEN</div>
+    <div id="content7">Über uns
+        <p>
+        „Izay mitambatra vato, izay misaraka fasika“
+        <br><br>
+        „Wer sich zusammenhält, ist wie der Stein; wer sich trennt, ist wie der Sand“
+        <br><br>
+        Rivo . MKSD-Vorstandsmitglieder – ohabolana Malagasy
+        </p>
+        <button class="btn btn-primary"><a href="">Detail</a></button>
+    </div>
 </div>
 
 

@@ -57,10 +57,40 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'category-list' %}">Categories</a>
         </li>
-
-
-
       {% endif %}
+
+
+
+            <div class="dropdown-center">
+                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                  <ul class="dropdown-menu">
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="#">Mitmachen</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'faq' %}">MKSD FAQ</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="#">über uns</a>
+                    </li>
+
+                  </ul>
+            </div>
+
+
 
             <div class="dropdown-center">
                 <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,19 +102,7 @@
                     </li>
 
                     <li>
-                      <a class="dropdown-item" href="{% url 'faq' %}">MKSD FAQ</a>
-                    </li>
-
-                    <li>
                       <a class="dropdown-item" href="{% url 'anmeldebogen' %}">Anmeldebogen</a>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
                     </li>
 
                   </ul>
