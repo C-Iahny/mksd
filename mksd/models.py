@@ -98,7 +98,7 @@ class Mitmachen(models.Model):
 	title = models.CharField(max_length=255)
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
-	mit_date = models.DateField(auto_now_add=True)
+	#mit_date = models.DateField(auto_now_add=True)
 
 	def __str__(self):
 		return self.title
