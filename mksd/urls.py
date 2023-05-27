@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import Add_Images, IndexView, AddCommentView, LikeView, CategoryListView, CategoryView, AddCategoryView, DeletePostView, UpdatePostView, AddPostView, ArticleDetailView, HomeView
+from .views import Mitmachen, Add_Images, IndexView, AddCommentView, LikeView, CategoryListView, CategoryView, AddCategoryView, DeletePostView, UpdatePostView, AddPostView, ArticleDetailView, HomeView
 
 urlpatterns = [
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('like/<int:pk>', LikeView, name="like_post"),
     path('article<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
     path('add_images/', Add_Images.as_view(), name="add_images"),
+    path('mitmachen/', Mitmachen.as_view(), name='mitmachen'),
 
 
 
