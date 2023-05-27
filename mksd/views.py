@@ -217,7 +217,9 @@ class Add_Images(TemplateView):
 		"""
 
 
-
+class Mitmachen(TemplateView):
+	model = Mitmachen
+	template_name = 'mitmachen.html'
 
 
 
