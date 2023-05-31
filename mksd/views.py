@@ -7,7 +7,9 @@ from django.http import HttpResponseRedirect
 from django.http import FileResponse, Http404
 from django.shortcuts import render, redirect
 from album.models import Album
-from .models import Neuigkeit, Live, Mitmachen
+from .models import Neuigkeit, Live, Mitmachen, Mitmachen_index
+from datetime import datetime, date
+from .forms import NeuigkeitForm, LiveForm, Mitmachen_indexForm
 
 
 #def home(request):
@@ -26,7 +28,15 @@ class IndexView(ListView):
 	ordering = ['-id']
 
 
+
+
 	def get_context_data(self, *args, **kwargs):
+		#☺ listes sur les menus en haut-----------------
+		cat_menu = Category.objects.all()
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"] = cat_menu
+		#----------------------------
+
 		post = Post.objects.all()
 		context = super(IndexView, self).get_context_data(*args, **kwargs)
 		context["post"] = post
@@ -34,27 +44,21 @@ class IndexView(ListView):
 		ordering = ['-id']
 
 
-		#☺ listes sur les menus en haut-----------------
-		cat_menu = Category.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["cat_menu"] = cat_menu
-
-
 		neu_list = Neuigkeit.objects.all()
-		context_002 = super(IndexView, self).get_context_data(*args, **kwargs)
-		context_002["neu_list"] = neu_list
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
+		context["neu_list"] = neu_list
 		ordering = ['-neu_date']
 		ordering = ['-id']
 
 		live_list = Live.objects.all()
-		context_003 = super(IndexView, self).get_context_data(*args, **kwargs)
-		context_003["live_list"] = live_list
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
+		context["live_list"] = live_list
 		ordering = ['-live_date']
 		ordering = ['-id']
 
-		mitmachen_list = Mitmachen.objects.all()
-		context_004 = super(IndexView, self).get_context_data(*args, **kwargs)
-		context_004["mitmachen_list"] = mitmachen_list
+		mitmachen_list = Mitmachen_index.objects.all()
+		context = super(IndexView, self).get_context_data(*args, **kwargs)
+		context["mitmachen_list"] = mitmachen_list
 		ordering = ['-mit_date']
 		ordering = ['-id']
 
@@ -67,6 +71,48 @@ class IndexView(ListView):
 		}
 
 	
+class AddNeuigkeitView(CreateView):
+	model = Neuigkeit
+	form_class = NeuigkeitForm  
+	template_name = 'add_neuigkeit.html'
+	#fields = '__all__'             On désactive ces deux-là => form_class.
+	#fields = ('title', 'body')
+
+	def get_context_data(self, *args, **kwargs):
+		cat_menu = Category.objects.all()
+		context = super(AddNeuigkeitView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"] = cat_menu
+		return context
+	success_url = reverse_lazy('index')
+
+
+class AddLiveView(CreateView):
+	model = Neuigkeit
+	form_class = LiveForm  
+	template_name = 'add_live.html'
+	#fields = '__all__'             On désactive ces deux-là => form_class.
+	#fields = ('title', 'body')
+
+	def get_context_data(self, *args, **kwargs):
+		cat_menu = Category.objects.all()
+		context = super(AddLiveView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"] = cat_menu
+		return context
+	success_url = reverse_lazy('index')
+
+class AddMitmachen_indexView(CreateView):
+	model = Neuigkeit
+	form_class = LiveForm  
+	template_name = 'add_mitmachen_index.html'
+	#fields = '__all__'             On désactive ces deux-là => form_class.
+	#fields = ('title', 'body')
+
+	def get_context_data(self, *args, **kwargs):
+		cat_menu = Category.objects.all()
+		context = super(AddMitmachen_indexView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"] = cat_menu
+		return context
+	success_url = reverse_lazy('index')
 
 
 #-------------------------- End IndexView -----------------------------
@@ -110,6 +156,8 @@ class HomeView(ListView):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		context["cat_menu"] = cat_menu
 		return context
+
+		
 
 def CategoryListView(request):
 	cat_menu_list = Category.objects.all()
@@ -196,7 +244,9 @@ class Add_Images(TemplateView):
 	template_name = "add_images.html"
 	fields = '__all__'
 
-
+class Mitmachen(TemplateView):
+	model = Mitmachen
+	template_name = 'mitmachen.html'
 
 """
 	def post(self, *args, **kwargs):
@@ -216,10 +266,16 @@ class Add_Images(TemplateView):
 			print(e)
 		"""
 
+def Unterstutzen(request):
+	context = {}
+	return render(request, 'unterstutzen.html', context)
 
-class Mitmachen(TemplateView):
-	model = Mitmachen
-	template_name = 'mitmachen.html'
+
+def uber_uns(request):
+	context = {}
+	return render(request, 'uber_uns.html', context)
+
+
 
 
 

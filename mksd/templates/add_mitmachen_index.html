@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Mitmachen_index
+{% endblock title %}
+
+{% block content %}
+
+<br><br><br>
+
+
+<div class="container">
+	<h1>Ajouter de Sei Dabei Post...</h1>
+
+	<div class="form-group">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button class="btn btn-primary">Ajouter</button>
+			<a href="{% url 'home'  %}" class="btn btn-secondary">Retour</a>
+	</div>
+</div>
+
+
+{% endblock content %}

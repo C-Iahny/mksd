@@ -106,6 +106,7 @@ iframe {
 }
 
 #content5 {
+    font: italic 1.2em "Fira Sans", serif;
     color: #fff;
     background-color: #555;
     grid-area: content5;
@@ -119,6 +120,7 @@ iframe {
 }
 
 #content6 {
+    font: italic 1.2em "Fira Sans", serif;
     color: #fff;
     background-color: #555;
     grid-area: content6;
@@ -143,9 +145,7 @@ iframe {
     box-shadow: 5px 7px 5px 1px #fffffff;
 }
 
-a {
-    color: #fff;
-}
+
 
 
 @media only screen and (max-width: 850px) {
@@ -171,6 +171,10 @@ a {
         background-size: cover;
     }
 
+    a {
+        color: #fff;
+    }
+
 
 
 }
@@ -179,7 +183,7 @@ a {
 
 
 <!-- HEADER -->
-<br>
+
 <div class="container_index">
     <!----------------------------- SLIDE IMAGES ---------------------------->
     <main>
@@ -192,9 +196,9 @@ a {
 
             <div class="carousel-inner">
                 {% for post in post %}
-                <a href="{% url 'article-detail' post.pk %}">
+                <a style="color: #fff; text-decoration: none;" href="{% url 'article-detail' post.pk %}">
                     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
-                        <img src="{{ post.header_image.url }}" style="height: 685px;" class="img-fluid d-block w-100" alt="foto">
+                        <img src="{{ post.header_image.url }}" style="height: 675px;" class="img-fluid d-block w-100" alt="foto">
                         <div class="carousel-caption d-none d-md-block">
                             <h1 class="animate__animated
                                 {% if forloop.counter0 == 0 %}
@@ -207,12 +211,15 @@ a {
 
                                 {% if forloop.counter == 2 %}
                                 animate__zoomIn
-                                {% endif %}">
-                                    {{ post.title }}
+                                {% endif %}"
+
+                                style="font-size: 150px;"
+                                >
+                                    {{ post.title }} 
                             </h1>
 
                             <h3>{{ post.snippet }}</h3>
-                            <button class="btn btn-secondary"><a href="{% url 'article-detail' post.pk %}">Détail</a></button>
+                            <button class="btn btn-secondary"><a style="color: #fff; text-decoration: none;" href="{% url 'article-detail' post.pk %}">Détail</a></button>
                         </div>
                     </div>
                 </a>
@@ -246,11 +253,19 @@ a {
             {% for liv in live_list|slice:1 %}
                 {% if liv.image %}
                     <img src="{{ liv.image.url }}" style="width: 100%; height: 100%;">
+
                 {% endif %}
+
                 {% if liv.file %}
                     <iframe src="{{ liv.file.url }}" style="width: 100%; height: 100%;"></iframe>
                 
                 {% endif %}
+
+                {% if liv.video %}
+                    <video src="{{ liv.video.url }}" style="width: 100%; height: 100%;" controls></video>
+                
+                {% endif %}
+
             {% endfor %}
         </div>
     </div>
@@ -268,11 +283,32 @@ a {
     </div>
 
     <div id="content5">MITMACHEN
-        
+        <br><br>
+        <h1>Wir suchen dich! Mach mit und Sei Dabei.</h1>
+        <br>
+        <p>Wir sind mit seinem ca. 50 Mitfliedern und diese wird rein ehrenamtlich geführt. <br>
+            Diese Bedeutet, dass wir immer Menschen brauchen, die sich aktiv in das Vereinsleben einbringen und in den unterschiedlichen Formen helfen. <br>
+            Du bist bei uns Willkommen, wenn du gerne das Zusammenarbeiten mit Madagassen magst und wenn, du ehrenamtliche Arbeit oder sozialen Engagement suchst. 
+            <br><br><a style="color: #fff; text-decoration: none;" href="{% url 'mitmachen' %}">Melde dich hier.</a></p>
     </div>
 
-    <div id="content6">UNTERSTÜTZEN</div>
+
+
+    <div id="content6">UNTERSTÜTZEN <br><br>
+
+        <p>
+            Als Madagasse kennen wir schon das Leiden unserer Landsleute. <br>
+            Eines unserer Ziel ist es daher, ihnen so gut wie möglich helfen zu können. <br>
+             Daher sameln wir Spenden aus der ganzen Welt und nehmen alle Hilfe, die zu uns kommen. <br><br> Für mehr Detail können Sie zu uns schreiben.      
+        </p>
+
+        <button class="btn btn-primary"><a style="color: #fff; text-decoration: none;" href="{% url 'unterstutzen' %}">Detail</a></button>
+
+    </div>
+
+
     <div id="content7">Über uns
+        <br><br><br>
         <p>
         „Izay mitambatra vato, izay misaraka fasika“
         <br><br>
@@ -280,7 +316,8 @@ a {
         <br><br>
         Rivo . MKSD-Vorstandsmitglieder – ohabolana Malagasy
         </p>
-        <button class="btn btn-primary"><a href="">Detail</a></button>
+        <br><br>
+        <button class="btn btn-primary"><a style="color: #fff; text-decoration: none;" href="{#% url 'uber_uns' %#}">Detail</a></button>
     </div>
 </div>
 

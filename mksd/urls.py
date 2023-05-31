@@ -1,7 +1,26 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import Mitmachen, Add_Images, IndexView, AddCommentView, LikeView, CategoryListView, CategoryView, AddCategoryView, DeletePostView, UpdatePostView, AddPostView, ArticleDetailView, HomeView
+from .views import (
+    AddNeuigkeitView,
+    AddLiveView,
+    AddMitmachen_indexView,
+    uber_uns, 
+    Unterstutzen, 
+    Mitmachen, 
+    Add_Images, 
+    IndexView, 
+    AddCommentView, 
+    LikeView, 
+    CategoryListView, 
+    CategoryView, 
+    AddCategoryView, 
+    DeletePostView, 
+    UpdatePostView, 
+    AddPostView, 
+    ArticleDetailView, 
+    HomeView,
+    )
 
 urlpatterns = [
 
@@ -19,6 +38,11 @@ urlpatterns = [
     path('article<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
     path('add_images/', Add_Images.as_view(), name="add_images"),
     path('mitmachen/', Mitmachen.as_view(), name='mitmachen'),
+    path('unterstutzen/', Unterstutzen, name='unterstutzen'),
+    path('uber_uns/', uber_uns, name='uber_uns'),
+    path('add_neuigkeit/', AddNeuigkeitView.as_view(), name='add_neuigkeit'),
+    path('add_live/', AddLiveView.as_view(), name='add_live'),
+    path('add_mitmachen_index/', AddMitmachen_indexView.as_view(), name='add_mitmachen_index'),
 
 
 

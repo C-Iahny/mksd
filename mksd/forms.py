@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Post, Category, Comment, Add_images
+from .models import Post, Category, Comment, Add_images, Neuigkeit, Live, Mitmachen_index
 
 
 #choices = [('sport', 'sport'), ('kultur', 'kultur')]
@@ -24,7 +24,7 @@ class PostForm(forms.ModelForm):
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
 			'header_image': forms.FileInput(attrs={'class': 'form-control'}),
-			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			#'file': forms.FileInput(attrs={'class': 'form-control'}),
 
 		}
 
@@ -66,9 +66,42 @@ class CommentForm(forms.ModelForm):
 		} 
 
 
+class NeuigkeitForm(forms.ModelForm):
+	class Meta:
+		model = Neuigkeit
+		fields = ('title', 'image', 'file')
+
+		widgets = {
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'image': forms.FileInput(attrs={'class': 'form-control'}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
+		}
+
+class LiveForm(forms.ModelForm):
+	class Meta:
+		model = Live
+		fields = ('title', 'image', 'file')
+
+		widgets = {
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'image': forms.FileInput(attrs={'class': 'form-control'}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
+		}
 
 
+class Mitmachen_indexForm(forms.ModelForm):
+	class Meta:
+		model = Mitmachen_index
+		fields = ('title', 'image', 'file')
 
+		widgets = {
+			'title': forms.TextInput(attrs={'class': 'form-control'}),
+			'image': forms.FileInput(attrs={'class': 'form-control'}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
+		}
 
 
 
