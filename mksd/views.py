@@ -18,59 +18,33 @@ from .forms import NeuigkeitForm, LiveForm, Mitmachen_indexForm
 #-------------------------- IndexView -------------------------------
 
 
-class IndexView(ListView):
-	model = Post
-	neu = Neuigkeit
-	live = Live
-	collab = Mitmachen
-	template_name = 'index.html'
+def IndexView(request):
+	post = Post.objects.all()
 	ordering = ['-post_date']
 	ordering = ['-id']
 
+	neu = Neuigkeit.objects.all()
+	ordering = ['-id']
+
+	live = Live.objects.all()
+	ordering = ['-live_date']
+	ordering = ['-id']
+
+	sei = Mitmachen_index.objects.all()
+	ordering = ['-mit_date']
+	ordering = ['-id']
+
+	return render(request, 'index.html',
+	 	{
+	 		'post': post, 
+	 		'neu': neu,
+	 		'live': live,
+	 		'sei': sei
+
+	 		}
+	 )
 
 
-
-	def get_context_data(self, *args, **kwargs):
-		#☺ listes sur les menus en haut-----------------
-		cat_menu = Category.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["cat_menu"] = cat_menu
-		#----------------------------
-
-		post = Post.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["post"] = post
-		ordering = ['-post_date']
-		ordering = ['-id']
-
-
-		neu_list = Neuigkeit.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["neu_list"] = neu_list
-		ordering = ['-neu_date']
-		ordering = ['-id']
-
-		live_list = Live.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["live_list"] = live_list
-		ordering = ['-live_date']
-		ordering = ['-id']
-
-		mitmachen_list = Mitmachen_index.objects.all()
-		context = super(IndexView, self).get_context_data(*args, **kwargs)
-		context["mitmachen_list"] = mitmachen_list
-		ordering = ['-mit_date']
-		ordering = ['-id']
-
-		return {
-			"post": post, 
-			"cat_menu": cat_menu, 
-			"neu_list": neu_list, 
-			"live_list": live_list, 
-			"mitmachen_list": mitmachen_list 
-		}
-
-	
 class AddNeuigkeitView(CreateView):
 	model = Neuigkeit
 	form_class = NeuigkeitForm  
@@ -87,7 +61,7 @@ class AddNeuigkeitView(CreateView):
 
 
 class AddLiveView(CreateView):
-	model = Neuigkeit
+	model = Live
 	form_class = LiveForm  
 	template_name = 'add_live.html'
 	#fields = '__all__'             On désactive ces deux-là => form_class.
@@ -101,8 +75,8 @@ class AddLiveView(CreateView):
 	success_url = reverse_lazy('index')
 
 class AddMitmachen_indexView(CreateView):
-	model = Neuigkeit
-	form_class = LiveForm  
+	model = Mitmachen_index 
+	form_class = Mitmachen_indexForm  
 	template_name = 'add_mitmachen_index.html'
 	#fields = '__all__'             On désactive ces deux-là => form_class.
 	#fields = ('title', 'body')

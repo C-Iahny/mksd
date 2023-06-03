@@ -7,7 +7,8 @@ from .views import (
     AddMitmachen_indexView,
     uber_uns, 
     Unterstutzen, 
-    Mitmachen, 
+    Mitmachen,
+    Mitmachen_index, 
     Add_Images, 
     IndexView, 
     AddCommentView, 
@@ -25,7 +26,7 @@ from .views import (
 urlpatterns = [
 
 
-    path('', IndexView.as_view(), name="index"),
+    path('', IndexView, name="index"),
     path('all_post', HomeView.as_view(), name="home"),
     path('article/<int:pk>/', ArticleDetailView.as_view(), name="article-detail"),
     path('add_post/', AddPostView.as_view(), name="add_post"), 

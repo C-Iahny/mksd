@@ -237,7 +237,7 @@ iframe {
 
     <div id="content2">Neuigkeiten
         <div class="item">
-            {% for neu in neu_list|slice:1 %}
+            {% for neu in neu|slice:1 %}
                 {% if neu.image %}
                     <img src="{{ neu.image.url }}" style="width: 100%; height: 100%;">
                 {% endif %}
@@ -250,7 +250,7 @@ iframe {
     </div>
     <div id="content3">MKSD Live
         <div class="item">
-            {% for liv in live_list|slice:1 %}
+            {% for liv in live|slice:1 %}
                 {% if liv.image %}
                     <img src="{{ liv.image.url }}" style="width: 100%; height: 100%;">
 
@@ -271,10 +271,11 @@ iframe {
     </div>
     <div id="content4">SEI DABEI
         <div class="item">
-            {% for mit in mitmachen_list|slice:1 %}
+            {% for mit in sei|slice:1 %}
                 {% if mit.image %}
                     <img src="{{ mit.image.url }}" style="width: 100%; height: 100%;">
                 {% endif %}
+
                 {% if mit.file %}
                     <iframe src="{{ mit.file.url }}" style="width: 100%; height: 100%;"></iframe>
                 {% endif %}

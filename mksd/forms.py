@@ -75,7 +75,7 @@ class NeuigkeitForm(forms.ModelForm):
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'image': forms.FileInput(attrs={'class': 'form-control'}),
 			'file': forms.FileInput(attrs={'class': 'form-control'}),
-			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
+			#'neu_date': forms.DateField(attrs={'class': 'form-control'}),
 		}
 
 class LiveForm(forms.ModelForm):
