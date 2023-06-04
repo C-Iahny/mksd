@@ -26,6 +26,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="https://mksdcom.files.wordpress.com/2021/03/cropped-cropped-whatsapp-image-2021-03-06-at-12.34.10-2-e1617635066766.jpeg" width="50px" height="50px" style="margin-right: 20px; margin-left: 8px;">
   <a class="navbar-brand" href="{% url 'index' %}">MKSD</a>
+  <a class="dropdown-item" href="{% url 'uber_uns' %}">über uns</a>
   <a class="navbar-brand" href="{% url 'home' %}">All Post</a>
   <a class="btn btn-dark" href="{% url 'album' %}">Album</a>
 
@@ -67,13 +68,9 @@
                 </button>
                   <ul class="dropdown-menu">
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
-                    </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
-                    </li>
+
+
 
                     <li>
                       <a class="dropdown-item" href="{% url 'live_list' %}">Live List</a>
@@ -87,17 +84,13 @@
                       <a class="dropdown-item" href="{% url 'mit_list' %}">Sei Dabei List</a>
                     </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'faq' %}">MKSD FAQ</a>
-                    </li>
+
 
                     <li>
                       <a class="dropdown-item" href="{% url 'neu_view' %}">News list</a>
                     </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'uber_uns' %}">über uns</a>
-                    </li>
+
 
                   </ul>
             </div>
@@ -109,6 +102,11 @@
                     Kontakt
                 </button>
                   <ul class="dropdown-menu">
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'faq' %}">MKSD FAQ</a>
+                    </li>
+
                     <li>
                       <a class="dropdown-item" href="{% url 'contact' %}">Send email</a>
                     </li>
@@ -116,6 +114,15 @@
                     <li>
                       <a class="dropdown-item" href="{% url 'anmeldebogen' %}">Anmeldebogen</a>
                     </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'impressum' %}">Impressum</a>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item" href="{% url 'about' %}">Datenschutzerklärung</a>
+                    </li>
+
 
                   </ul>
             </div>
