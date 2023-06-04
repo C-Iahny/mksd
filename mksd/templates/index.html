@@ -238,9 +238,11 @@ iframe {
     <div id="content2">Neuigkeiten
         <div class="item">
             {% for neu in neu|slice:1 %}
+
                 {% if neu.image %}
-                    <img src="{{ neu.image.url }}" style="width: 100%; height: 100%;">
+                    <a href="{% url 'neuigkeit_detail' neu.pk %}"><img src="{{ neu.image.url }}" style="width: 100%; height: 100%;"></a>
                 {% endif %}
+
                 {% if neu.file %}
                     <iframe src="{{ neu.file.url }}" style="width: 100%; height: 100%;"></iframe>
                 
@@ -250,19 +252,19 @@ iframe {
     </div>
     <div id="content3">MKSD Live
         <div class="item">
-            {% for liv in live|slice:1 %}
-                {% if liv.image %}
-                    <img src="{{ liv.image.url }}" style="width: 100%; height: 100%;">
+            {% for live in live|slice:1 %}
+                {% if live.image %}
+                    <a href="{% url 'live_detail' live.pk %}"><img src="{{ live.image.url }}" style="width: 100%; height: 100%;"></a>
 
                 {% endif %}
 
                 {% if liv.file %}
-                    <iframe src="{{ liv.file.url }}" style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="{{ live.file.url }}" style="width: 100%; height: 100%;"></iframe>
                 
                 {% endif %}
 
                 {% if liv.video %}
-                    <video src="{{ liv.video.url }}" style="width: 100%; height: 100%;" controls></video>
+                    <video src="{{ live.video.url }}" style="width: 100%; height: 100%;" controls></video>
                 
                 {% endif %}
 
@@ -273,7 +275,7 @@ iframe {
         <div class="item">
             {% for mit in sei|slice:1 %}
                 {% if mit.image %}
-                    <img src="{{ mit.image.url }}" style="width: 100%; height: 100%;">
+                    <a href="{% url 'mit_detail' mit.pk %}"><img src="{{ mit.image.url }}" style="width: 100%; height: 100%;"></a>
                 {% endif %}
 
                 {% if mit.file %}

@@ -77,12 +77,17 @@ class Comment(models.Model):
 
 class Neuigkeit(models.Model):
 	title = models.CharField(max_length=255)
+	body = models.TextField()
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	neu_date = models.DateField(auto_now_add=True)
 	
 	def __str__(self):
 		return self.title
+
+"""	def get_absolute_url(self):
+		return reverse('index', args=[str(self.id)] )
+"""
 
 class Live(models.Model):
 	title = models.CharField(max_length=255)
@@ -97,6 +102,7 @@ class Live(models.Model):
 
 class Mitmachen_index(models.Model):
 	title = models.CharField(max_length=255)
+	body = models.TextField()
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	mit_date = models.DateField(auto_now_add=True)

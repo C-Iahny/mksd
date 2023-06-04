@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from album.models import Album
 from .models import Neuigkeit, Live, Mitmachen, Mitmachen_index
 from datetime import datetime, date
-from .forms import NeuigkeitForm, LiveForm, Mitmachen_indexForm
+from .forms import LiveForm, Mitmachen_indexForm, NeuigkeitForm
 
 
 #def home(request):
@@ -23,16 +23,16 @@ def IndexView(request):
 	ordering = ['-post_date']
 	ordering = ['-id']
 
-	neu = Neuigkeit.objects.all()
-	ordering = ['-id']
+	neu = Neuigkeit.objects.all().order_by('-id', '-neu_date')
 
-	live = Live.objects.all()
-	ordering = ['-live_date']
-	ordering = ['-id']
 
-	sei = Mitmachen_index.objects.all()
-	ordering = ['-mit_date']
-	ordering = ['-id']
+	live = Live.objects.all().order_by('-id', '-live_date')
+	#ordering = ['-live_date']
+	#ordering = ['-id']
+
+	sei = Mitmachen_index.objects.all().order_by('-id', '-mit_date')
+	#ordering = ['-mit_date']
+	#ordering = ['-id']
 
 	return render(request, 'index.html',
 	 	{
@@ -44,6 +44,23 @@ def IndexView(request):
 	 		}
 	 )
 
+# HomeVieu ----------------------------------------------------------------
+
+class HomeView(ListView):
+	model = Post
+	template_name = 'home.html'
+	ordering = ['-post_date']
+	ordering = ['-id']
+
+	def get_context_data(self, *args, **kwargs):
+		cat_menu = Category.objects.all()
+		context = super(HomeView, self).get_context_data(*args, **kwargs)
+		context["cat_menu"] = cat_menu
+		return context
+
+
+
+# Neuigkeiten --------------------------------------------------------------
 
 class AddNeuigkeitView(CreateView):
 	model = Neuigkeit
@@ -59,13 +76,25 @@ class AddNeuigkeitView(CreateView):
 		return context
 	success_url = reverse_lazy('index')
 
+class NeuigkeitDetail_list(ListView):
+	model = Neuigkeit
+	template_name = 'neuigkeit_view.html'
+	ordering =  ['-pk']
+	ordering = ['-neu_date']
 
+
+class NeuigkeitDetail(DetailView):
+	model = Neuigkeit
+	template_name = 'neuigkeit_detail.html'
+
+
+
+# Live --------------------------------------------------------------------------
 class AddLiveView(CreateView):
 	model = Live
 	form_class = LiveForm  
 	template_name = 'add_live.html'
-	#fields = '__all__'             On désactive ces deux-là => form_class.
-	#fields = ('title', 'body')
+
 
 	def get_context_data(self, *args, **kwargs):
 		cat_menu = Category.objects.all()
@@ -74,6 +103,21 @@ class AddLiveView(CreateView):
 		return context
 	success_url = reverse_lazy('index')
 
+
+class LiveList(ListView):
+	model = Live
+	template_name = 'live_list.html'
+	ordering =  ['-id']
+	ordering = ['-live_date']
+
+
+class LiveDetail(DetailView):
+	model = Live
+	template_name = 'live_detail.html'
+
+
+
+# Mitmachen_index ----------------------------------------------------------------
 class AddMitmachen_indexView(CreateView):
 	model = Mitmachen_index 
 	form_class = Mitmachen_indexForm  
@@ -87,6 +131,19 @@ class AddMitmachen_indexView(CreateView):
 		context["cat_menu"] = cat_menu
 		return context
 	success_url = reverse_lazy('index')
+
+
+class MitList(ListView):
+	model = Mitmachen_index
+	template_name = 'mitmachen_index_list.html'
+	ordering =  ['-id']
+	ordering = ['-mit_date']
+
+
+class MitDetail(DetailView):
+	model = Mitmachen_index
+	template_name = 'mitmachen_index_detail.html'
+
 
 
 #-------------------------- End IndexView -----------------------------
@@ -116,20 +173,6 @@ def LikeView(request, pk):
 		liked = True
 	
 	return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
-
-
-
-class HomeView(ListView):
-	model = Post
-	template_name = 'home.html'
-	ordering = ['-post_date']
-	ordering = ['-id']
-
-	def get_context_data(self, *args, **kwargs):
-		cat_menu = Category.objects.all()
-		context = super(HomeView, self).get_context_data(*args, **kwargs)
-		context["cat_menu"] = cat_menu
-		return context
 
 		
 
@@ -222,23 +265,6 @@ class Mitmachen(TemplateView):
 	model = Mitmachen
 	template_name = 'mitmachen.html'
 
-"""
-	def post(self, *args, **kwargs):
-		try:
-			images = self.request.FILES.getlist('images')
-
-			for image in images:
-				post_images = Add_images.objects.create(
-						images = image
-
-					)
-			return redirect('home')
-		except ValueError as e:
-			print(e)
-		
-		except images.DoesNotExist as e:
-			print(e)
-		"""
 
 def Unterstutzen(request):
 	context = {}

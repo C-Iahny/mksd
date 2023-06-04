@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}  {{ live.title }}  {% endblock title %}
+
+{% block content %}
+
+<style type="text/css">
+	button a { 
+		color: #fff; 
+		text-decoration: none;
+	}
+
+	button a:hover {
+		color: #fff;
+	}
+
+</style>
+
+<div class="container">
+		<br>
+	<h2>Description de l'annonce...</h2>
+		<br>
+
+
+		<div class="card mb-3" style="max-width: 1540px;">
+		  <div class="row g-0">
+		    <div class="col-md-6">
+		    {% if live.image %}
+		      <img src="{{ live.image.url }}" class="img-fluid rounded-start", style="width: 850px; max-height:950px;" alt="...">
+		    {% endif %}
+		    </div>
+		    <div class="col-md-6">
+		      <div class="card-body">
+		        <h1 class="card-title">{{ live.title }}</h1>
+		        <br>
+		        <p class="card-text">{{ live.body }}</p>
+
+		        <p class="card-text"><small class="text-body-secondary">{{ live.live_date }}</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<button class="btn btn-secondary"><a href="{% url 'mit_list' %}">Sei Dabei Liste</a></button>
+
+</div>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}  {{ live.title }}  {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+	<h2>Description de l'annonce...</h2>
+	
+	{% for live in object_list %}
+
+		<div class="card mb-3" style="max-width: 540px;">
+		  <div class="row g-0">
+		    <div class="col-md-4">
+		    {% if live.image %}
+		      <img src="{{ live.image.url }}" class="img-fluid rounded-start" alt="...">
+		    {% endif %}
+		    </div>
+		    <div class="col-md-8">
+		      <div class="card-body">
+		        <h5 class="card-title"><a href="{% url 'live_detail' live.pk %}">{{ live.title }}</a></h5>
+		        <p class="card-text">{{ live.body }}</p>
+		        <p class="card-text"><small class="text-body-secondary">{{ live.neu_date }}</small></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	{% endfor %}
+</div>
+
+
+{% endblock content %}
