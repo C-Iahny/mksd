@@ -3,28 +3,12 @@
 
 {% block content %}
 
-
-<h1>Image Detail </h1>
-
 <div class="container">
-	{% if images_obj %}
-		{% for img in images_obj.all %}
+	<h1>Image Detail </h1>
 
-		<img src="{{ img.pk }}">
-
-
-		<a href="{% url 'album_detail' img.pk %}" class="btn btn-sm btn-secondary">Retour</a>
-
-		{% endfor %}
+		<img src="{{ images.images }}">
 
 
-
-		{% endif %}
-	{% for img in album_tobj_set.all %}
-		<img src="{{ img.images.url }}">
-
-	<a href="{% url 'album_detail' img.pk %}" class="btn btn-sm btn-secondary">Retour</a>
-	{% endfor %}
 </div>
 {% endblock %}
 

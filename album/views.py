@@ -26,10 +26,12 @@ class CreateAlbumView(CreateView):
 
 # Product detail
 class AlbumDetailView(TemplateView):
+	model = Album
 	template_name = "album_detail.html"
+	ordering = ['-id']
 
 	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
+		context = super(AlbumDetailView, self).get_context_data(**kwargs)
 		context ['album_obj'] = Album.objects.get(id = self.kwargs['pk'])
 
 		return context
@@ -59,13 +61,10 @@ class AddAlbumImages(TemplateView):
 
 # Image Details
 class ImgaeDetail(TemplateView):
+	model = Images
 	template_name = 'imagedetail.html'
+	ordering = ['-id']
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		context ['images_obj'] = Images.objects.get(id = self.kwargs['pk'])
-
-		return context
 
 
 def Files_Upload(request):

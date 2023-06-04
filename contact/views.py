@@ -13,10 +13,10 @@ def Kontact(request):
 
 	if request.method == 'POST':
 		contact = Contact()
-		message_name 	= request.POST.get('message-name')
+		message_name 	= request.POST.get('name')
 		from_email 		= request.POST.get('from-email')
-		ville 			= request.POST.get('ville')
-		message 		= request.POST.get('message')
+		ville 			= request.POST.get('stadt')
+		message 		= request.POST.get('text')
 
 		contact.name = message_name 
 		contact.email = from_email
@@ -40,7 +40,7 @@ def Kontact(request):
 			message_name, #subject
 			message, #message
 			from_email, #from email
-			['miarisoa00@yahoo.de'], #to email
+			['kontakt.mksd@gmail.com'], #to email
 			fail_silently=False, 
 
 			)
@@ -62,6 +62,9 @@ class Impressum(TemplateView):
 	model = Contact
 	template_name = 'impressum.html'
 
+
+
+# Anmeldung -------------------------------------------------------------------
 
 def Anmeldebogen(request):
 
@@ -101,7 +104,7 @@ def Anmeldebogen(request):
 			team_name, #subject
 			text, #message
 			from_email, #from email
-			['miarisoa00@yahoo.de'], #to email
+			['anmeldung.mksd@gmail.com'], #to email
 			fail_silently=False, 
 
 			)
