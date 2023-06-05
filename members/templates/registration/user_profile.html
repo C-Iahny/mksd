@@ -7,55 +7,53 @@
 {% endblock title %}
 
 {% block content %}
+<br>
+<div class="container">
+		<h1>Profile d'utilisateur.</h1>
+<br>
+		<div class="card mb-3">
+		  <div class="row g-0">
+		    <div class="col-md-2">
 
-<h1>Profile d'utilisateur.</h1>
-<a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>
+		    	{% if page_user.profile_pic %}
+		    	  <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_pic">
+		    	{% else %}
+		    	  <img src="{% static 'mksd/images/profile_pic.png' %}" class="img-fluid rounded-start" alt="Profile_pic">
+		      {% endif %}
 
+			    </div>
 
+			    <div class="col-md-10">
+			      <div class="card-body">
 
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-2">
+			        <h5 class="card-title">
+			        	{{ page_user.user.first_name }} 
+								{{ page_user.user.last_name }}
+								<br>
+								<small>
 
-    	{% if page_user.profile_pic %}
-    	  <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start" alt="Profile_pic">
-    	{% else %}
-    	  <img src="{% static 'mksd/images/profile_pic.png' %}" class="img-fluid rounded-start" alt="Profile_pic">
-      {% endif %}
+								</small>
+							</h5>
 
-	    </div>
+						{% if page_user.website_url %}
+							<a href="{{ page_user.website_url }}">Website |</a>
+						{% endif %}
 
-	    <div class="col-md-10">
-	      <div class="card-body">
+						{% if page_user.facebook_url %}
+							<a href="{{ page_user.facebook_url }}">Facebook |</a>
+						{% endif %}
 
-	        <h5 class="card-title">
-	        	{{ page_user.user.first_name }} 
-						{{ page_user.user.last_name }}
-						<br>
-						<small>
+						{% if page_user.instagram_url %}
+							<a href="{{ page_user.instagram_url }}">Instagram</a>
+						{% endif %}
+					</p>
+			        <p class="card-text">{{ page_user.biographie }}</p>
 
-						</small>
-					</h5>
-
-				{% if page_user.website_url %}
-					<a href="{{ page_user.website_url }}">Website |</a>
-				{% endif %}
-
-				{% if page_user.facebook_url %}
-					<a href="{{ page_user.facebook_url }}">Facebook |</a>
-				{% endif %}
-
-				{% if page_user.instagram_url %}
-					<a href="{{ page_user.instagram_url }}">Instagram</a>
-				{% endif %}
-			</p>
-	        <p class="card-text">{{ page_user.biographie }}</p>
-
-      </div>
-    </div>
-  </div>
-
-  
+		      </div>
+		    </div>
+		  </div>
+</div>
+<a href="{% url 'home' %}" class="btn btn-secondary">Retour</a>  
 
 {% endblock content %}
 
