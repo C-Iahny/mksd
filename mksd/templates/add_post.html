@@ -24,7 +24,7 @@
 			<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ form.as_p }}
-				{{ form.media }}
+				{{ form.media }} 
 				<button class="btn btn-primary">Post</button>
 				<a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
 			</form>
