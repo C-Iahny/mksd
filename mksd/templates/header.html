@@ -67,31 +67,18 @@
                     Menu
                 </button>
                   <ul class="dropdown-menu">
-
-
-
-
-
                     <li>
                       <a class="dropdown-item" href="{% url 'live_list' %}">Live List</a>
                     </li>
-
                     <li>
                       <a class="dropdown-item" href="{% url 'mitmachen' %}">Mitmachen</a>
                     </li>
-
                     <li>
                       <a class="dropdown-item" href="{% url 'mit_list' %}">Sei Dabei List</a>
                     </li>
-
-
-
                     <li>
                       <a class="dropdown-item" href="{% url 'neu_view' %}">News list</a>
                     </li>
-
-
-
                   </ul>
             </div>
 
@@ -139,55 +126,51 @@
      {% if user.is_authenticated %}
         <li class="nav-item">
           
-     {% if user.is_staff or superuser %}
+         {% if user.is_staff or superuser %}
 
-        <div class="dropdown_menu">
+            <div class="dropdown_menu">
 
-           <div class="dropdown-center">
-                <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Media Adden
-                </button>
+               <div class="dropdown-center">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Media Adden
+                    </button>
 
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item"href="{% url 'add_album' %}">Album Adden </a>
-                    </li>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item"href="{% url 'add_album' %}">Album Adden </a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'add_category' %}">Category Adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'add_category' %}">Category Adden</a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'addfiles' %}">Files Adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'addfiles' %}">Files Adden</a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'add_live' %}">Live Adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'add_live' %}">Live Adden</a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'add_neuigkeit' %}">Neuigkeit Adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'add_neuigkeit' %}">Neuigkeit Adden</a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'add_post' %}">Post adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'add_post' %}">Post adden</a>
+                        </li>
 
-                    <li>
-                      <a class="dropdown-item" href="{% url 'add_mitmachen_index' %}">Sei_Dabei Adden</a>
-                    </li>
+                        <li>
+                          <a class="dropdown-item" href="{% url 'add_mitmachen_index' %}">Sei_Dabei Adden</a>
+                        </li>
 
-                  </ul>
-            </div>       
+                      </ul>
+                </div>       
 
-            
-
-
-
-        </div>
+            </div>
 
 
-        {% endif %}
+            {% endif %}
   
 
      {% else %}
@@ -207,46 +190,50 @@
     </ul>
 
     
-{% if user.is_authenticated %}
-  
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ user.first_name }} 
-            {{ user.last_name }}
-          </a>
+    {% if user.is_authenticated %}
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ user.first_name }} 
+          {{ user.last_name }}
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a></li>
+          {% if user.profile.id %}
+            <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a></li>
+            <li><a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile Page</a></li>
+          {% else %}  
+            <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile Page</a></li>
+          {% endif %}
+          <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+      
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+              </a>
 
 
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-            {% if not user.is_staff or superuser %}
-            <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
-            {% endif %}
-            
-            {% if user.profile.id %}
-              <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a>
-
-              <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile Page</a>
-
-               
-            {% else %}  
-              <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile Page</a>
-
-            {% endif %}
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
 
-            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-       
-            
-            
-          </div>
-      </li>
+                
 
 
 
-    </ul>
- 
-{% endif %}
+           
+                
+                
+              </div>
+          </li>
+
+
+
+        </ul>
+     
+    {% endif %}
     
   </div>
 </nav>
