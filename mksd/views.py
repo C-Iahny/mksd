@@ -11,11 +11,12 @@ from .models import Neuigkeit, Live, Mitmachen, Mitmachen_index
 from datetime import datetime, date
 from .forms import LiveForm, Mitmachen_indexForm, NeuigkeitForm
 
-
 #def home(request):
 #	return render(request, 'home.html', {})
 
 #-------------------------- IndexView -------------------------------
+
+
 
 
 def IndexView(request):

@@ -48,8 +48,10 @@ main {
 
 #content2 {
     background-color: whitesmoke;
+    width: 650px;
     grid-area: content2;
-    margin: 25px auto;
+    margin-left: 45px;
+    margin-top: 25px;
     padding: 55px 25px 25px 25px;
     border-radius: 25px;
     align-items: center;
@@ -58,9 +60,9 @@ main {
 
 #content_main {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	margin: 35px;
+	flex-wrap: initial;
+	justify-content: space-between;
+	margin: 30px;
 }
 
 
@@ -150,10 +152,11 @@ iframe {
     </main>
 
     <div id="content_main">
+
 	    <div id="content1">
 	    	{% if post.header_image %}
 				<div class="item">
-					<img src="{{ post.header_image.url }}" style="max-width: 41vh; max-height: 100%; border-radius: 25px;">
+					<img src="{{ post.header_image.url }}" style="max-width: 65vh; max-height: 100%; border-radius: 25px;">
 				</div>
 			{% endif %}
 	    </div>

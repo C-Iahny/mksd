@@ -93,12 +93,14 @@ class NeuigkeitForm(forms.ModelForm):
 class LiveForm(forms.ModelForm):
 	class Meta:
 		model = Live
-		fields = ('title', 'image', 'file')
+		fields = ('title', 'image', 'file', 'body')
 
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'image': forms.FileInput(attrs={'class': 'form-control'}),
 			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			'body': forms.Textarea(attrs={'class': 'form-control'}),
+
 			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 
@@ -106,12 +108,14 @@ class LiveForm(forms.ModelForm):
 class Mitmachen_indexForm(forms.ModelForm):
 	class Meta:
 		model = Mitmachen_index
-		fields = ('title', 'image', 'file')
+		fields = ('title', 'image', 'file', 'body')
 
 		widgets = {
 			'title': forms.TextInput(attrs={'class': 'form-control'}),
 			'image': forms.FileInput(attrs={'class': 'form-control'}),
 			'file': forms.FileInput(attrs={'class': 'form-control'}),
+			'body': forms.Textarea(attrs={'class': 'form-control'}),
+
 			#'neu_date': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 

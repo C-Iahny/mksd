@@ -5,6 +5,7 @@
 
 {% if user.is_authenticated %}
 
+<div class="container">
 	<h1>Add Post</h1>
 
 	<small>Raha manisy sary ao anaty Body enao dia <br> ataovy max height="650" dia ny width="433". </small>
@@ -30,6 +31,7 @@
 		</div>
 	</div>
 
+</div>
 	<script type="text/javascript">
 		var name = "{{ user.id }}"
 		document.getElementById("Ihany").value = name;

@@ -94,6 +94,7 @@ class Live(models.Model):
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	video = models.FileField(blank=True, null=True, upload_to="files/video")
+	body = models.TextField()
 	live_date = models.DateField(auto_now_add=True)
 
 	def __str__(self):
