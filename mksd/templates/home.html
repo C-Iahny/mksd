@@ -12,7 +12,7 @@
     <div class="row">
         {% for post in object_list %}
         <div class="card m-3" style="width: 18rem;" id="img">
-            <img src="{{ post.header_image.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 200px; margin-top: 13px;">
+            <img src="{{ post.header_image.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 190px; margin-top: 13px;">
             <div class="card-body">
                 <h5 class="card-title">{{post}}</h5>
                 {{ post.snippet }}
