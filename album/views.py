@@ -42,6 +42,8 @@ class UpdateAlbumView(UpdateView):
 	template_name = 'update_album.html'
 	form_class = EditAlbumForm
 
+	success_url = reverse_lazy('album')
+
 class DeleteAlbumView(DeleteView):
 	model = Album
 	template_name = 'delete_album.html'
