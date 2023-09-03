@@ -23,7 +23,7 @@
     <br>
     {% for pimage in album_obj.images_set.all %}
 
-    	<a href="{{ pimage.images.url }}"><img src="{{ pimage.images.url }}" class="card-img-top" alt="banner_image" style="width: 563px; height: 400px;"></a>
+    	<a href="{{ pimage.images.url }}"><img src="{{ pimage.images.url }}" class="card-img-top" alt="banner_image" style="width: 363px; height: 200px;"></a>
     {% empty %}
         <p>Mbola tsy misy sary fa ampio.</p>
         <a href="{% url 'addfiles' %}"></a>
