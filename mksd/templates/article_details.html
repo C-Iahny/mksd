@@ -219,20 +219,21 @@ iframe {
 				  </div>
 				</div>
 				<div class="btn">
-					<a href="{% url 'home' %}" ><button class="btn btn-secondary">Retour</button></a>
-					<button class="btn btn-secondary">Glissez vers le bas pour voir plus</button>
+					<a href="{% url 'home' %}" ><button class="btn btn-secondary">Back</button></a>
+					<button class="btn btn-secondary">Ckick this link =>
+						{% if post.file %}
+							<a href="{{ post.file.url }}" target="_blank">PDF File</a>
+						{% else %}
+							<h3>Fichier non disponible</h3>
+    	
+    					{% endif %}
+    					to view rules and details.
+					</button>
 				</div>
 				<br><br>	
     </div>
 
-    <div id="content4">
-    	{% if post.file %}
-    		<iframe src="{{ post.file.url }}" ></iframe>
-    	{% else %}
-    		<h3>Fichier non disponible</h3>
-    	
-    	{% endif %}
-    </div>
+
 
 </div>
 
