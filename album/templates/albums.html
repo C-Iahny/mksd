@@ -18,15 +18,15 @@
     <br />
 <h1>TOUS LES ALBUMS</h1>    <br />
     {% if user.is_authenticated %}
-	<small>
-       		  <a href="{% url 'add_album' %}" class="btn btn-success btn-sm">Créer Album</a>
-                 
-		{% for album in album_list %}
-                   <a href="{% url 'update_album' album.pk %}" class="btn btn-secondary btn-sm">Edit</a>
-                </small>
-                <small><a href="{% url 'delete_album' album.pk %}" class="btn btn-danger btn-sm">Delete</a></small>       
-		{% endfor %}
-        {% endif %}
+
+            <a href="{% url 'add_album' %}" class="btn btn-success btn-sm">Créer Album</a>
+               <small>
+       
+                
+                
+                
+
+    {% endif %}
 
     <br />
     <hr />
@@ -37,7 +37,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{album.title}}</h5>
                 <a href="{% url 'album_detail' album.id %}" class="btn btn-primary btn-sm">Detail</a>
-                <a href="{% url 'addimages' album.pk %}" class="btn btn-secondary btn-sm">Add images</a>
+                <a href="{% url 'addimages' album.pk %}" class="btn btn-secondary btn-sm">+images</a>
+                <a href="{% url 'update_album' album.pk %}" class="btn btn-secondary btn-sm">Edit</a>
+                <small><a href="{% url 'delete_album' album.pk %}" class="btn btn-danger btn-sm">Del</a></small>
+                </small>
             </div>
 
         </div>

@@ -10,26 +10,38 @@
 		width: 500px;
 	}
 
+	img {
+		margin-top: 11px;
+		margin-left: 11px;
+
 </style>
 
 <div class="container">
 	<h1>Delete Album</h1>
-		<div>Delete: {{ album.title }}</div>
+        <div class="card m-3" style="width: 18rem;">
+            <img src="{{ album.banner.url }}" class="card-img-top" alt="banner_image" style="width: 263px; height: 200px;">
+            <div class="card-body">
+                <h5 class="card-title">{{album.title}}</h5>
 
+                </small>
+            </div>
+
+        </div>
 
 				<div class="form-group">
 					<form method="POST">
 						{% csrf_token %}
 						{{ form.as_p }}
 						<strong>Tena sûr an? </strong><br><br>
-						<button class="btn btn-danger">Delete</button>
+						<a href="{% url 'album_detail' album.pk %}" class="btn btn-secondary">Cancel</a>
 						<a href="{% url 'album_detail' album.pk %}" class="btn btn-primary">Detail</a>
+						<button class="btn btn-danger">Delete</button>
 						
 					</form>
 				</div>
-			</div>
+			
 
-	<a href="{% url 'album_detail' album.pk %}" class="btn btn-secondary">Retour</a>
-
+	
+</div>
 
 {% endblock %}
