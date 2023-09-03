@@ -24,7 +24,7 @@ class PostForm(forms.ModelForm):
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
 			'header_image': forms.FileInput(attrs={'class': 'form-control'}),
-			#'file': forms.FileInput(attrs={'class': 'form-control'}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
 
 		}
 
@@ -43,7 +43,7 @@ class Add_images(forms.ModelForm):
 class EditForm(forms.ModelForm):
 	class Meta:
 		model = Post 
-		fields = ('title', 'author', 'body', 'snippet', 'header_image')
+		fields = ('title', 'author', 'body', 'snippet', 'header_image', 'file')
 
 		widgets = {
 
@@ -52,6 +52,7 @@ class EditForm(forms.ModelForm):
 			'body': forms.Textarea(attrs={'class': 'form-control'}),
 			'snippet': forms.Textarea(attrs={'class': 'form-control'}),
 			'header_image': forms.FileInput(attrs={"rows": "", "class": "file_class_name"}),
+			'file': forms.FileInput(attrs={'class': 'form-control'}),
 		}
 
 
