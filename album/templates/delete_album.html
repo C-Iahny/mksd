@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}  Delete Post  {% endblock %}
+
+{% block content %}
+
+
+<style type="text/css">
+	
+	.container {
+		width: 500px;
+	}
+
+</style>
+
+<div class="container">
+	<h1>Delete Album</h1>
+		<div>Delete: {{ album.title }}</div>
+
+
+				<div class="form-group">
+					<form method="POST">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<strong>Tena sûr an? </strong><br><br>
+						<button class="btn btn-danger">Delete</button>
+						<a href="{% url 'album_detail' album.pk %}" class="btn btn-primary">Detail</a>
+						
+					</form>
+				</div>
+			</div>
+
+	<a href="{% url 'album_detail' album.pk %}" class="btn btn-secondary">Retour</a>
+
+
+{% endblock %}

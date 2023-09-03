@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}  Update Album  {% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+			
+
+			<style type="text/css">
+				
+				.container {
+					width: 500px;
+				}
+
+			</style>
+
+
+			<div class="container">
+				<h1>Update Album</h1>
+				<div class="form-group">
+					<form method="POST">
+						{% csrf_token %}
+						{{ form.as_p }}
+						{{ form.media }}
+						<button class="btn btn-primary">Update</button>
+						<a href="{% url 'album' %}" class="btn btn-secondary">Cancel</a>
+						
+					</form>
+				</div>
+			</div>
+		
+	{% else %}
+		<h1>Vous n'êtes pas sensé faire ça et vous le savez non? Kurwa!!!</h1>
+	{% endif %}
+
+{% endblock %}

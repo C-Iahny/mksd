@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from .models import Album, Images, FileUpload
-from .forms import AlbumForm
+from .forms import AlbumForm, EditAlbumForm
 from django.urls import reverse_lazy
 
 
@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 class AlbumView(TemplateView):
 	model = Album
 	template_name = "albums.html"
-	ordering = ['-album.id']
+	ordering = ['-album.id', 'url']
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
@@ -35,6 +35,18 @@ class AlbumDetailView(TemplateView):
 		context ['album_obj'] = Album.objects.get(id = self.kwargs['pk'])
 
 		return context
+
+
+class UpdateAlbumView(UpdateView):
+	model = Album 
+	template_name = 'update_album.html'
+	form_class = EditAlbumForm
+
+class DeleteAlbumView(DeleteView):
+	model = Album
+	template_name = 'delete_album.html'
+
+	success_url = reverse_lazy('album')
 
 
 # Add product images
