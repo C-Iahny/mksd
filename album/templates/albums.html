@@ -21,11 +21,11 @@
 	<small>
        		  <a href="{% url 'add_album' %}" class="btn btn-success btn-sm">Créer Album</a>
                  
-
+		{% for album in album_list %}
                    <a href="{% url 'update_album' album.pk %}" class="btn btn-secondary btn-sm">Edit</a>
                 </small>
                 <small><a href="{% url 'delete_album' album.pk %}" class="btn btn-danger btn-sm">Delete</a></small>       
-	
+		{% endfor %}
         {% endif %}
 
     <br />
