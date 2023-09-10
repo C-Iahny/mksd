@@ -77,7 +77,7 @@ class Comment(models.Model):
 
 class Neuigkeit(models.Model):
 	title = models.CharField(max_length=255)
-	body = RichTextField(blank=True, null=True)
+	body = models.TextField()
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	neu_date = models.DateField(auto_now_add=True)
@@ -94,7 +94,7 @@ class Live(models.Model):
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	video = models.FileField(blank=True, null=True, upload_to="files/video")
-	body = RichTextField(blank=True, null=True)
+	body = models.TextField()
 	live_date = models.DateField(auto_now_add=True)
 
 	def __str__(self):
@@ -103,7 +103,7 @@ class Live(models.Model):
 
 class Mitmachen_index(models.Model):
 	title = models.CharField(max_length=255)
-	body = RichTextField(blank=True, null=True)
+	body = models.TextField()
 	image = models.ImageField(blank=True, null=True, upload_to="images/actus")
 	file = models.FileField(blank=True, null=True, upload_to="files/actus")
 	mit_date = models.DateField(auto_now_add=True)

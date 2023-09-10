@@ -97,9 +97,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'ySQg8KujQMWbxQBskgtC',
-        'HOST': 'containers-us-west-200.railway.app',
-        'PORT': '5741',
+        'PASSWORD': 'oLjBhu5KdPgF2pRPemEY',
+        'HOST': 'containers-us-west-68.railway.app',
+        'PORT': '6775',
     }
 }
 
@@ -156,10 +156,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')],
-
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'static'),
+#)
 
 
 CSRF_TRUSTED_ORIGINS = ['https://*.','https://*.127.0.0.1']

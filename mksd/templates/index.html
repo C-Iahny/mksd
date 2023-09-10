@@ -10,7 +10,7 @@
     display: grid;
     height: 300vh;
     grid-template-columns: 0.3fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.2fr 8fr 2fr 1.2fr 1.2fr 1.2fr 12fr 10fr 10fr 10fr; 
+    grid-template-rows: 1.2fr 8fr 2fr 1.2fr 1.2fr 1.2fr 1.2fr 10fr 10fr 10fr; 
     grid-template-areas: 
         "sidebar main main main main main main"
         "sidebar main main main main main main"
@@ -36,7 +36,6 @@
 main {
     grid-area: main;
     background-image: url("images/logo.jpeg");
-    
 }
 
 h1 {
@@ -199,7 +198,7 @@ iframe {
                 {% for post in post %}
                 <a style="color: #fff; text-decoration: none;" href="{% url 'article-detail' post.pk %}">
                     <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %} ">
-                        <img src="{{ post.header_image.url }}" style="height: 605px;" class="img-fluid d-block w-100" alt="foto">
+                        <img src="{{ post.header_image.url }}" style="height: 455px;" class="img-fluid d-block w-100" alt="foto">
                         <div class="carousel-caption d-none d-md-block">
                             <h1 class="animate__animated
                                 {% if forloop.counter0 == 0 %}
@@ -228,7 +227,7 @@ iframe {
             </div>
         </div>
     </main>
-        <br><br>
+
 
     <div id="sidebar"></div>
     <div id="content1">
@@ -303,8 +302,7 @@ iframe {
         <p>
             Als Madagasse kennen wir schon das Leiden unserer Landsleute. <br>
             Eines unserer Ziel ist es daher, ihnen so gut wie möglich helfen zu können. <br>
-             Daher sameln wir Spenden aus der ganzen Welt und nehmen alle Hilfe, die zu uns kommen. 
-            <br><br> Für mehr Detail können Sie zu uns schreiben.      Oder einfach hier Spende geben <a rel="" href="{% url 'mitmachen' %}" >beim Mitmachen </a>
+             Daher sameln wir Spenden aus der ganzen Welt und nehmen alle Hilfe, die zu uns kommen. <br><br> Für mehr Detail können Sie zu uns schreiben.      
         </p>
 
         <button class="btn btn-primary"><a style="color: #fff; text-decoration: none;" href="{% url 'unterstutzen' %}">Detail</a></button>
@@ -322,7 +320,7 @@ iframe {
         Rivo . MKSD-Vorstandsmitglieder – ohabolana Malagasy
         </p>
         <br><br>
-        <button class="btn btn-primary"><a style="color: #fff; text-decoration: none;" href="{% url 'uber_uns' %}">Detail</a></button>
+        <button class="btn btn-primary"><a style="color: #fff; text-decoration: none;" href="{#% url 'uber_uns' %#}">Detail</a></button>
     </div>
 </div>
 
