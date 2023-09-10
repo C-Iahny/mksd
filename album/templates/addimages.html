@@ -14,10 +14,10 @@
     <hr />
     <form action="" method="POST" enctype="multipart/form-data">
     	{% csrf_token %}
-    	<input type="file" name="images" id="" class="form-control" multiple>
+    	<input type="file" name="images, video" id="" class="form-control" multiple>
     	<br>
     	<button type="submit" class="btn btn-sm btn-primary my-3">Submit</button>
-        <a href="{% url 'album' %}" class="btn btn-sm btn-danger">Annuler</a>
+        <a href="{% url 'album' %}" class="btn btn-sm btn-danger">Cancel</a>
     </form>
 </div>
 

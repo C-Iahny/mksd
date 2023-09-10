@@ -44,6 +44,8 @@ class UpdateAlbumView(UpdateView):
 
 	success_url = reverse_lazy('album')
 
+
+
 class DeleteAlbumView(DeleteView):
 	model = Album
 	template_name = 'delete_album.html'
@@ -57,7 +59,7 @@ class AddAlbumImages(TemplateView):
 
 	def post(self, *args, **kwargs):
 		try:
-			images = self.request.FILES.getlist('images')
+			images = self.request.FILES.getlist('images', 'video')
 			album = Album.objects.get(id = self.kwargs['pk'])
 
 			for image in images:
